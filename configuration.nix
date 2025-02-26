@@ -14,6 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -42,33 +44,32 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-
-    # Enable the XFCE Desktop Environment.
     displayManager.lightdm.enable = true;
-    desktopManager.xfce.enable = true;
+     # Configure keymap in X11
+     xkb = {
+       layout = "us";
+       variant = "";
+     };
+  
+     videoDrivers = [ "nvidia" ];
 
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-
-    videoDrivers = [ "nvidia" ];
-
-    windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [
-            brightnessctl
-            polybar
-            rofi
-            nitrogen
-        ];
-    };
+     desktopManager = {
+         xterm.enable = false;
+     }; 
+     windowManager.i3 = {
+         enable = true;
+         extraPackages = with pkgs; [
+             brightnessctl
+             polybar
+             rofi
+             nitrogen
+         ];
+     };
   };
-
 
   hardware.nvidia = {
     open = true;
@@ -120,16 +121,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     clang
     gcc
     luarocks
     python3
     go
+
     zsh
-    neovim
-    xclip
-    xsel
+    stow
     ripgrep
     git
     du-dust
@@ -138,14 +137,36 @@
     eza
     zoxide
     lazygit
-    psmisc
     tmux
-    unzip
+
+    neovim
+    xclip
+    xsel
     kitty
+    psmisc
+    unzip
+
     arandr
-    stow
-    i3
+    pulsemixer
   ];
+  environment.variables.EDITOR = "nvim";
+
+  services.flatpak = {
+      enable = true;
+      packages = [
+          { appId = "com.stremio.Stremio"; origin = "flathub";  }
+      ];
+      update.auto = {
+        enable = true;
+        onCalendar = "weekly";
+      };
+  };
+  xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk
+      ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
