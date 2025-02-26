@@ -3,9 +3,12 @@
 {
     services.syncthing = {
         enable = true;
-        group = "mygroupname";
+        dataDir = "/home/juniorsundar/Dropbox/";
+        openDefaultPorts = true;
+        configDir = "/home/juniorsundar/Dropbox/.config";
         user = "juniorsundar";
-        dataDir = "/home/juniorsundar/Dropbox";    # Default folder for new synced folders
-            configDir = "/home/juniorsundar/.config/syncthing";   # Folder for Syncthing's settings and keys
+        group = "users";
+        guiAddress = "0.0.0.0:8384";
+        # declarative = { SNIPPED };
     };
-};
+}

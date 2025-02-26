@@ -20,11 +20,13 @@
       ./modules/time-locale.nix
       ./modules/user.nix
       ./modules/x11.nix
+      ./modules/syncthing.nix
     ];
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   services.printing.enable = true;
+  services.tailscale.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default

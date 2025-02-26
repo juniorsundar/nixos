@@ -3,8 +3,12 @@
 {
   services.xserver = {
     enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    videoDrivers = [ "nvidia" ];
     displayManager.lightdm.enable = true;
-    xkb.layout = "us";
     desktopManager.xterm.enable = false;
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
