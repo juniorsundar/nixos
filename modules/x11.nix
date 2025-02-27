@@ -8,13 +8,16 @@
       variant = "";
     };
     videoDrivers = [ "nvidia" ];
-    displayManager.lightdm.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
     desktopManager.xterm.enable = false;
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
     windowManager.i3 = {
       enable = true;
-      extraPackages = with pkgs; [ brightnessctl polybar rofi nitrogen ];
+      extraPackages = with pkgs; [ brightnessctl polybar rofi nitrogen arandr xsel xclip];
     };
   };
 }

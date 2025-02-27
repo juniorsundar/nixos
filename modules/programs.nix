@@ -5,5 +5,10 @@
     firefox.enable = true;
     nix-ld.enable = true;
     zsh.enable = true;
+
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 }
