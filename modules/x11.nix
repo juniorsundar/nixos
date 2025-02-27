@@ -17,7 +17,7 @@
     libinput.enable = true;
     windowManager.i3 = {
       enable = true;
-      extraPackages = with pkgs; [ brightnessctl polybar rofi nitrogen arandr xsel xclip];
+      extraPackages = with pkgs; [ brightnessctl polybar nitrogen arandr xsel xclip rofi];
     };
   };
 }

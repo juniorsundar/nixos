@@ -15,7 +15,7 @@
     libreoffice
 
     # Wayland
-    wofi dolphin wl-clipboard waybar
+    wl-clipboard waybar wofi
     playerctl swaylock wlogout pavucontrol
   ];
 }
