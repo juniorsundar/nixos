@@ -9,7 +9,7 @@
     # Functional
     zsh stow ripgrep git du-dust fd
     bat eza zoxide lazygit tmux neovim
-    kitty pulsemixer
+    kitty pulsemixer wezterm
 
     # App Suites
     libreoffice
