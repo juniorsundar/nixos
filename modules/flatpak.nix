@@ -6,6 +6,7 @@
     packages = [ 
       { appId = "com.stremio.Stremio"; origin = "flathub"; } 
       { appId = "md.obsidian.Obsidian"; origin = "flathub"; } 
+      { appId = "app.zen_browser.zen"; origin = "flathub"; }
     ];
     update.auto = {
       enable = true;
