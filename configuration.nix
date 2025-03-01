@@ -11,14 +11,9 @@
       ./modules/boot.nix
       ./modules/environment.nix
       ./modules/flatpak.nix
-      ./modules/mounts.nix
-      ./modules/networking.nix
       ./modules/nvidia.nix
       ./modules/packages.nix
-      ./modules/programs.nix
       ./modules/sound.nix
-      ./modules/time-locale.nix
-      ./modules/user.nix
       ./modules/x11.nix
       ./modules/syncthing.nix
     ];
@@ -27,6 +22,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   services.printing.enable = true;
   services.tailscale.enable = true;
+  services.openssh.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default
@@ -54,7 +50,6 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
