@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.libinput.enable = true;
   services.displayManager.sddm = {
     enable = true;
@@ -13,7 +15,7 @@
       layout = "us";
       variant = "";
     };
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = ["nvidia"];
     desktopManager.xterm.enable = false;
     # Enable touchpad support (enabled default in most desktopManager).
     # windowManager.i3 = {

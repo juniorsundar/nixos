@@ -1,25 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/boot.nix
-      ./modules/environment.nix
-      ./modules/flatpak.nix
-      ./modules/nvidia.nix
-      ./modules/packages.nix
-      ./modules/sound.nix
-      ./modules/x11.nix
-      ./modules/syncthing.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules/boot.nix
+    ./modules/environment.nix
+    ./modules/flatpak.nix
+    ./modules/nvidia.nix
+    ./modules/packages.nix
+    ./modules/sound.nix
+    ./modules/x11.nix
+    ./modules/syncthing.nix
+  ];
 
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   services.printing.enable = true;
   services.tailscale.enable = true;
   services.openssh.enable = true;
@@ -56,7 +56,4 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-
 }
-

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   time.timeZone = "Asia/Dubai";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
@@ -16,7 +18,7 @@
   };
 
   environment = {
-    pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
+    pathsToLink = ["/libexec"]; # links /libexec from derivations to /run/current-system/sw
     variables.EDITOR = "nvim";
   };
 }
