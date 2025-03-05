@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   home.username = "juniorsundar"; # Replace with your actual username
   home.homeDirectory = "/home/juniorsundar"; # Adjust for macOS (/Users/username)
   home.stateVersion = "24.11";
@@ -6,8 +6,12 @@
   # Install packages
   home.packages = with pkgs; [
     git
-    home-manager
   ];
+
+  xdg.configFile.nvim = {
+      source = ../../dotfiles.bak/nvim/.config/nvim;
+      recursive = true;
+  };
 
   # Configure programs
   # programs.zsh.enable = true;

@@ -29,7 +29,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.juniorsundar = import ./home/home-desktop.nix;
+          home-manager.users.juniorsundar = import ./home-desktop.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
