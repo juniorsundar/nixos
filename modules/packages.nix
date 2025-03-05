@@ -28,8 +28,9 @@
     eza
     zoxide
     lazygit
-    tmux
+    zellij #tmux
     neovim
+    emacs30
     kitty
     pulsemixer
     wezterm
