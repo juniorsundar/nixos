@@ -29,7 +29,6 @@
       "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
       "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
       "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
-      # "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
       "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
       "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
     };
@@ -37,9 +36,6 @@
     dataFile = {
     };
   };
-
-  # Configure programs
-  # programs.zsh.enable = true;
 
   wayland.windowManager.hyprland = {
       enable = true;
