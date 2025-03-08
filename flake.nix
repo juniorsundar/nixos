@@ -6,8 +6,17 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dotfiles = {
+      url = "github:juniorsundar/dotfiles?ref=main";  # Your submodule
+      flake = false;  # Important for raw files
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
@@ -15,6 +24,8 @@
     nix-flatpak,
     nixpkgs,
     home-manager,
+    hyprland,
+    dotfiles,
     ...
   } @ inputs: {
     # Please replace my-nixos with your hostname
@@ -29,10 +40,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {inherit inputs;}; # Pass inputs here
           home-manager.users.juniorsundar = import ./home-desktop.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
         }
       ];
     };

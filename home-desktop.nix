@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   home.username = "juniorsundar"; # Replace with your actual username
@@ -28,7 +29,7 @@
       "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
       "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
       "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
-      "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
+      # "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
       "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
       "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
     };
@@ -39,6 +40,16 @@
 
   # Configure programs
   # programs.zsh.enable = true;
+
+  wayland.windowManager.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      extraConfig = import (inputs.dotfiles + "/hypr/.config/hypr/hypr-home-desktop.nix") {
+          inherit inputs pkgs;
+      };
+};
+
   programs.git = {
     enable = true;
     userName = "juniorsundar";
