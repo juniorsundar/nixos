@@ -33,6 +33,8 @@
       "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
       "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
       "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
+
+      "hypr/plugins/libhy3.so".source = "${inputs.hy3.packages.x86_64-linux.hy3}/lib/libhy3.so";
     };
 
     dataFile = {
@@ -47,6 +49,7 @@
       extraConfig = import (inputs.dotfiles + "/hypr/.config/hypr/hypr-home-desktop.nix") {
           inherit inputs pkgs;
       };
+      plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
 };
 
   programs.git = {
