@@ -19,22 +19,22 @@
     pavucontrol
   ];
 
-
   home.file = {
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zshrc";
   };
 
-  xdg.configFile = {
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
-    "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
-    "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
-    "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
-    "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
-    "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
-  };
+  xdg = {
+    configFile = {
+      "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
+      "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
+      "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
+      "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
+      "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
+      "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
+    };
 
-  xdg.dataFile = {
-    
+    dataFile = {
+    };
   };
 
   # Configure programs
