@@ -18,6 +18,7 @@
     swaylock
     wlogout
     pavucontrol
+    rofi-wayland
   ];
 
   home.file = {
@@ -28,12 +29,14 @@
     configFile = {
       "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
       "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
+      "rofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/rofi/.config/rofi";
       "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
       "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
       "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
     };
 
     dataFile = {
+      "rofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/rofi/.local/share/rofi";
     };
   };
 
