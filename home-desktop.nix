@@ -9,7 +9,14 @@
 
   # Install packages
   home.packages = with pkgs; [
-    git
+    wl-clipboard
+    waybar
+    wofi
+    swaynotificationcenter
+    playerctl
+    swaylock
+    wlogout
+    pavucontrol
   ];
 
 
@@ -23,6 +30,7 @@
     "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
     "hypr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr/.config/hypr";
     "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
+    "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
   };
 
   xdg.dataFile = {

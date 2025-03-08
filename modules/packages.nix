@@ -37,20 +37,9 @@
 
     # App Suites
     libreoffice
-
-    # Wayland
-    wl-clipboard
-    waybar
-    wofi
-    swaynotificationcenter
-    playerctl
-    swaylock
-    wlogout
-    pavucontrol
   ];
 
   programs = {
-    # firefox.enable = true;
     nix-ld.enable = true;
     zsh.enable = true;
     thunar.enable = true;
