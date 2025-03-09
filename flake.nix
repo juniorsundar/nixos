@@ -13,14 +13,12 @@
 
     dotfiles = {
       url = "github:juniorsundar/dotfiles?ref=main";  # Your submodule
-      flake = false;  # Important for raw files
+      flake = false;
     };
 
-    hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.0";
+    hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.1";
     hy3 = {
-      url = "github:outfoxxed/hy3?ref=hl0.47.0"; # where {version} is the hyprland release version
-      # or "github:outfoxxed/hy3" to follow the development branch.
-      # (you may encounter issues if you dont do the same for hyprland)
+      url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
       inputs.hyprland.follows = "hyprland";
     };
   };

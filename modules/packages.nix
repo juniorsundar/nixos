@@ -4,9 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # fileSystems
-    ntfs3g
-
     # Important stuff
     wget
     clang
@@ -20,6 +17,7 @@
     # Functional
     zsh
     stow
+    btop
     ripgrep
     git
     du-dust
