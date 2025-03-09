@@ -28,8 +28,11 @@
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zshrc";
     ".zsh_aliases".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_aliases";
     ".zsh_completions".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_completions";
+    ".zoxide.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zoxide.zsh";
+    ".themes".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.themes";
     ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.p10k.zsh";
     ".wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wezterm/.wezterm.lua";
+    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/git/.gitconfig";
   };
 
   xdg = {
