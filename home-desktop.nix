@@ -26,33 +26,34 @@
   ];
 
   home.file = {
-    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zshrc";
+    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/git/.gitconfig";
+    ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.p10k.zsh";
+    ".themes".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.themes";
+    ".wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wezterm/.wezterm.lua";
+    ".zoxide.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zoxide.zsh";
     ".zsh_aliases".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_aliases";
     ".zsh_completions".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_completions";
-    ".zoxide.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zoxide.zsh";
-    ".themes".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.themes";
-    ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.p10k.zsh";
-    ".wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wezterm/.wezterm.lua";
-    ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/git/.gitconfig";
+    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zshrc";
   };
 
   xdg = {
     configFile = {
-      "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
+      "bat".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/bat/.config/bat";
+      "btop".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/btop/.config/btop";
+      "delta".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/delta/.config/delta";
       "doom".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/emacs/.config/doom";
-      "rofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/rofi/.config/rofi";
-      "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
-      "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
-      "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
-      "waybar".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/waybar/.config/waybar";
-      "zsh-abbr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.config/zsh-abbr";
-      "kitty".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/kitty/.config/kitty";
-      "lazygit".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/lazygit/.config/lazygit";
       "gtk-2.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.config/gtk-2.0";
       "gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.config/gtk-3.0";
       "gtk-4.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.config/gtk-4.0";
-      "bat".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/bat/.config/bat";
-      "delta".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/delta/.config/delta";
+      "kitty".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/kitty/.config/kitty";
+      "lazygit".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/lazygit/.config/lazygit";
+      "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
+      "rofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/rofi/.config/rofi";
+      "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
+      "waybar".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/waybar/.config/waybar";
+      "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
+      "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
+      "zsh-abbr".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.config/zsh-abbr";
     };
 
     dataFile = {
