@@ -14,6 +14,7 @@
     ntfs3g
 
     wl-clipboard
+    mosh
     waybar
     wofi
     swaynotificationcenter
