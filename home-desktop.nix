@@ -23,10 +23,6 @@
     wlogout
     pavucontrol
     rofi-wayland
-
-    devcontainer
-    docker
-    docker-compose
   ];
 
   home.file = {
