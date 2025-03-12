@@ -34,6 +34,8 @@
     ".zsh_aliases".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_aliases";
     ".zsh_completions".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zsh_completions";
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zsh/.zshrc";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/tmux/.tmux.conf";
+    ".tmux".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/tmux/.tmux";
   };
 
   xdg = {

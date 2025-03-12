@@ -26,7 +26,8 @@
     eza
     zoxide
     lazygit
-    zellij #tmux
+    # zellij
+    tmux
     neovim
     emacs30
     kitty
@@ -35,6 +36,7 @@
 
     # App Suites
     libreoffice
+    opera
   ];
 
 
