@@ -26,8 +26,8 @@
     eza
     zoxide
     lazygit
-    # zellij
-    tmux
+    zellij
+    # tmux
     neovim
     emacs30
     kitty
@@ -39,10 +39,9 @@
     opera
   ];
 
-
   virtualisation.docker.enable = true;
-  users.users.juniorsundar.extraGroups = [ "docker" ];
-  users.extraGroups.docker.members = [ "username-with-access-to-socket" ];
+  users.users.juniorsundar.extraGroups = ["docker"];
+  users.extraGroups.docker.members = ["username-with-access-to-socket"];
 
   programs = {
     nix-ld.enable = true;
