@@ -20,6 +20,7 @@
     btop
     ripgrep
     git
+    delta
     du-dust
     fd
     bat
@@ -51,6 +52,10 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
+    };
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
     };
   };
 }

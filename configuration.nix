@@ -24,6 +24,7 @@
   services.tailscale.enable = true;
   services.openssh.enable = true;
   nixpkgs.config.allowUnfree = true;
+  security.polkit.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

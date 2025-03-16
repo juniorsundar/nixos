@@ -14,10 +14,11 @@
     ntfs3g
 
     wl-clipboard
+    grim
     mosh
     waybar
     wofi
-    swaynotificationcenter
+    mako
     playerctl
     swaylock
     wlogout
@@ -49,9 +50,9 @@
       "gtk-4.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gtk/.config/gtk-4.0";
       "kitty".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/kitty/.config/kitty";
       "lazygit".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/lazygit/.config/lazygit";
+      "mako".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/mako/.config/mako";
       "nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/nvim/.config/nvim";
       "rofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/rofi/.config/rofi";
-      "swaync".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/swaync/.config/swaync";
       "waybar".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/waybar/.config/waybar";
       "wofi".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/wofi/.config/wofi";
       "zellij".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/zellij/.config/zellij";
