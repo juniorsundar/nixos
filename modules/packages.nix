@@ -31,7 +31,8 @@
     # tmux
     neovim
     emacs30
-    kitty
+    # kitty
+    ghostty
     pulsemixer
     wezterm
 
