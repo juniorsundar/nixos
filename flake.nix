@@ -21,6 +21,11 @@
       url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
       inputs.hyprland.follows = "hyprland";
     };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -31,12 +36,18 @@
     hyprland,
     dotfiles,
     hy3,
+    emacs-overlay,
     ...
   } @ inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.juniorsundar = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ({ config, pkgs, ... }: {
+          nixpkgs.overlays = [
+            inputs.emacs-overlay.overlays.default
+          ];
+        })
         nix-flatpak.nixosModules.nix-flatpak
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect

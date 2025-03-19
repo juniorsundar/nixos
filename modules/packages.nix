@@ -5,14 +5,15 @@
 }: {
   environment.systemPackages = with pkgs; [
     # Important stuff
-    wget
     clang
     gcc
-    luarocks
-    python3
     go
+    imagemagick
+    luarocks
     psmisc
+    python3
     unzip
+    wget
 
     # Functional
     zsh
@@ -30,7 +31,6 @@
     zellij
     # tmux
     neovim
-    emacs30
     # kitty
     ghostty
     pulsemixer
@@ -38,7 +38,7 @@
 
     # App Suites
     libreoffice
-    opera
+    firefox
   ];
 
   virtualisation.docker.enable = true;
@@ -50,13 +50,9 @@
     zsh.enable = true;
     thunar.enable = true;
 
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-    };
+    # hyprland = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    # };
   };
 }

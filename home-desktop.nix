@@ -24,7 +24,6 @@
     # swaylock
     # wlogout
     # pavucontrol
-    rofi-wayland
   ];
 
   # wayland.windowManager.hyprland = {
@@ -41,6 +40,14 @@
     enable = true;
     userName = "juniorsundar";
     userEmail = "juniorsundar@gmail.com";
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-unstable;
+    extraPackages = (epkgs: [
+      epkgs.treesit-grammars.with-all-grammars
+    ]);
   };
 
   # Enable Home Manager

@@ -41,6 +41,7 @@
     gnome-characters
     # gnome-clocks
     gnome-console
+    # gnome-tweaks
     gnome-contacts
     gnome-font-viewer
     gnome-logs
