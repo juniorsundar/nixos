@@ -33,7 +33,7 @@
     zellij
     # tmux
     neovim
-    # kitty
+    dolphin
     ghostty
     pulsemixer
     wezterm
