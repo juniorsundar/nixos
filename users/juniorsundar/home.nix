@@ -10,15 +10,10 @@
 
   # Install packages
   home.packages = with pkgs; [
-    # fileSystems
-    ntfs3g
-    mosh
-
     wl-clipboard
     grim
     slurp
     waybar
-    wofi
     swaynotificationcenter
     playerctl
     swaylock
@@ -34,8 +29,8 @@
       package = pkgs.materia-theme;
     };
     font = {
-        name = "SF Pro";
-        size = 12;
+      name = "SF Pro";
+      size = 12;
     };
   };
 

@@ -12,7 +12,7 @@
     };
 
     dotfiles = {
-      url = "github:juniorsundar/dotfiles?ref=main";  # Your submodule
+      url = "github:juniorsundar/dotfiles?ref=main"; # Your submodule
       flake = false;
     };
 
@@ -39,27 +39,48 @@
     emacs-overlay,
     ...
   } @ inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.juniorsundar = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [
-            inputs.emacs-overlay.overlays.default
-          ];
-        })
-        nix-flatpak.nixosModules.nix-flatpak
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {inherit inputs;}; # Pass inputs here
-          home-manager.users.juniorsundar = import ./home-desktop.nix;
-        }
-      ];
+    # Hostname
+    nixosConfigurations = {
+      juniorsundar = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # Common base configuration
+          ./common/configuration.nix
+          ./common/hardware.nix
+
+          # Host-specific configuration
+          ./hosts/juniorsundar/configuration.nix
+          ./hosts/juniorsundar/hardware.nix
+
+          # Overlays
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
+            nixpkgs.overlays = [
+              emacs-overlay.overlays.default
+            ];
+          })
+
+          # External modules
+          nix-flatpak.nixosModules.nix-flatpak
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;}; # Pass inputs here
+              users = {
+                juniorsundar = import ./users/juniorsundar/home.nix;
+                # anotherUser = import ./...;
+              };
+            };
+          }
+        ];
+      };
+
+      # anotherHost = ... {};
     };
   };
 }

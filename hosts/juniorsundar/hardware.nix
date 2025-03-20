@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: {
-  # Bootloader.
+  imports = [
+    ./hardware-autogen.nix
+  ];
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -25,21 +28,5 @@
     device = "/dev/disk/by-uuid/9CE87958E879319E";
     fsType = "ntfs-3g";
     options = ["defaults" "noauto" "x-systemd.automount" "nofail"];
-  };
-
-  networking = {
-    networkmanager.enable = true;
-    hostName = "juniorsundar";
-    # wireless.enable = true;
-  };
-
-  users.users.juniorsundar = {
-    isNormalUser = true;
-    description = "Junior Sundar";
-    extraGroups = ["networkmanager" "wheel" "audio"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
-    shell = pkgs.zsh;
   };
 }

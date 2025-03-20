@@ -3,6 +3,13 @@
   pkgs,
   ...
 }: {
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidia_x11;
+  };
+
   # hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -14,3 +21,4 @@
     jack.enable = true;
   };
 }
+
