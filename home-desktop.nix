@@ -12,20 +12,32 @@
   home.packages = with pkgs; [
     # fileSystems
     ntfs3g
+    mosh
 
     wl-clipboard
-
     grim
-    mosh
+    slurp
     waybar
     wofi
-    mako
+    swaynotificationcenter
     playerctl
     swaylock
     wlogout
     pavucontrol
     rofi-wayland
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Materia-dark";
+      package = pkgs.materia-theme;
+    };
+    font = {
+        name = "SF Pro";
+        size = 12;
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -46,9 +58,9 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-unstable;
-    extraPackages = (epkgs: [
+    extraPackages = epkgs: [
       epkgs.treesit-grammars.with-all-grammars
-    ]);
+    ];
   };
 
   # Enable Home Manager

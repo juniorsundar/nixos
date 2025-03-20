@@ -36,11 +36,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1742152865,
-        "narHash": "sha256-dL1CKITBdWqLR45YPbUFbahxZ8Gy0zaZP2rvtG/bssk=",
+        "lastModified": 1742492655,
+        "narHash": "sha256-sCdjl+upGILkqk50i8JO/y7XfeHXMfj1T33EsMt/ots=",
         "owner": "juniorsundar",
         "repo": "dotfiles",
-        "rev": "29f62d569cc5c7d4cea2dc0c19f7ef93d4199305",
+        "rev": "b4b548dd535842ee0ee63880327d696377b4dd3c",
         "type": "github"
       },
       "original": {

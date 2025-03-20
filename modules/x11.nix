@@ -6,9 +6,8 @@
   services.libinput.enable = true;
 
   services.xserver = {
-    displayManager.sddm = {
+    displayManager.gdm = {
       enable = true;
-      wayland.enable = true;
     };
 
     enable = true;

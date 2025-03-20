@@ -31,12 +31,11 @@
     zoxide
     lazygit
     zellij
-    # tmux
     neovim
-    dolphin
     ghostty
     pulsemixer
     wezterm
+    networkmanagerapplet
 
     # App Suites
     libreoffice
@@ -50,6 +49,7 @@
   programs = {
     nix-ld.enable = true;
     zsh.enable = true;
+    thunar.enable = true;
 
     hyprland = {
       enable = true;
