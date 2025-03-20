@@ -15,6 +15,8 @@
     unzip
     wget
 
+    glibc
+
     # Functional
     zsh
     stow
@@ -48,11 +50,10 @@
   programs = {
     nix-ld.enable = true;
     zsh.enable = true;
-    thunar.enable = true;
 
-    # hyprland = {
-    #   enable = true;
-    #   xwayland.enable = true;
-    # };
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 }
