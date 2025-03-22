@@ -10,9 +10,11 @@
   };
 
   users.users = {
-    juniorsundar = import ../../users/juniorsundar/system.nix;
-    extraGroups.docker.members = ["juniorsundar"];
+    juniorsundar = (import ../../users/juniorsundar/system.nix) {
+      inherit pkgs;
+    };
   };
+  users.extraGroups.docker.members = ["juniorsundar"];
 
   #===== SERVICES
   services = {
@@ -45,6 +47,7 @@
     };
   };
 
+  environment.shells = with pkgs; [zsh bash];
   #===== Host Packages
   environment.systemPackages = with pkgs; [
     # Important stuff
