@@ -20,6 +20,8 @@
     wlogout
     pavucontrol
     rofi-wayland
+
+    inkscape-with-extensions
   ];
 
   gtk = {
