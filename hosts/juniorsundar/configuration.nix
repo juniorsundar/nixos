@@ -59,6 +59,10 @@
     psmisc
     python3
     glibc
+    rustc
+    cargo
+    rust-analyzer
+    zig
 
     # fileSystems
     ntfs3g
