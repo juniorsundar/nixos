@@ -85,7 +85,7 @@
     thunderbird.enable = true;
     nix-ld.enable = true;
     zsh.enable = true;
-    thunar.enable = true;
+    # thunar.enable = true;
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?

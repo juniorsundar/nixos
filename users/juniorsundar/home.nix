@@ -11,13 +11,13 @@
   # Install packages
   home.packages = with pkgs; [
     wl-clipboard
-    grim
-    slurp
-    waybar
-    swaynotificationcenter
+    # grim
+    # slurp
+    # waybar
+    # swaynotificationcenter
     playerctl
-    swaylock
-    wlogout
+    # swaylock
+    # wlogout
     pavucontrol
     rofi-wayland
 
@@ -36,15 +36,15 @@
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    extraConfig = import (inputs.dotfiles + "/hypr/.config/hypr/hypr-home-desktop.nix") {
-      inherit inputs pkgs;
-    };
-    plugins = [inputs.hy3.packages.x86_64-linux.hy3];
-  };
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  #   extraConfig = import (inputs.dotfiles + "/hypr/.config/hypr/hypr-home-desktop.nix") {
+  #     inherit inputs pkgs;
+  #   };
+  #   plugins = [inputs.hy3.packages.x86_64-linux.hy3];
+  # };
 
   programs.git = {
     enable = true;

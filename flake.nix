@@ -16,11 +16,11 @@
       flake = false;
     };
 
-    hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.1";
-    hy3 = {
-      url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.1";
+    # hy3 = {
+    #   url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -33,9 +33,9 @@
     nix-flatpak,
     nixpkgs,
     home-manager,
-    hyprland,
+    # hyprland,
+    # hy3,
     dotfiles,
-    hy3,
     emacs-overlay,
     ...
   } @ inputs: {
@@ -70,6 +70,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "backup";
               extraSpecialArgs = {inherit inputs;}; # Pass inputs here
               users = {
                 juniorsundar = import ./users/juniorsundar/home.nix;

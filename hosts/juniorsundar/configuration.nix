@@ -31,12 +31,13 @@
 
     libinput.enable = true;
     xserver = {
-      displayManager.gdm = {
-        enable = true;
-        autoSuspend = false;
-        wayland = true;
+      displayManager = {
+        # gdm = {
+        #   enable = true;
+        #   autoSuspend = false;
+        #   wayland = true;
+        # };
       };
-
       enable = true;
 
       xkb = {
@@ -45,7 +46,20 @@
       };
 
       videoDrivers = ["nvidia"];
-      desktopManager.xterm.enable = false;
+      desktopManager = {
+        xterm.enable = false;
+      };
+    };
+
+    desktopManager = {
+      plasma6.enable = true;
+    };
+    displayManager = {
+      defaultSession = "plasma";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
     };
   };
 
@@ -70,10 +84,10 @@
     libreoffice
   ];
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-  };
+  # programs = {
+  #   hyprland = {
+  #     enable = true;
+  #     xwayland.enable = true;
+  #   };
+  # };
 }
