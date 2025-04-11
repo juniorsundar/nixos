@@ -31,13 +31,6 @@
 
     libinput.enable = true;
     xserver = {
-      displayManager = {
-        # gdm = {
-        #   enable = true;
-        #   autoSuspend = false;
-        #   wayland = true;
-        # };
-      };
       enable = true;
 
       xkb = {
@@ -83,11 +76,4 @@
     # App Suites
     libreoffice
   ];
-
-  # programs = {
-  #   hyprland = {
-  #     enable = true;
-  #     xwayland.enable = true;
-  #   };
-  # };
 }

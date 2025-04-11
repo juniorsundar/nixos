@@ -16,12 +16,6 @@
       flake = false;
     };
 
-    # hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.1";
-    # hy3 = {
-    #   url = "github:outfoxxed/hy3?ref=hl0.47.0-1";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,8 +27,6 @@
     nix-flatpak,
     nixpkgs,
     home-manager,
-    # hyprland,
-    # hy3,
     dotfiles,
     emacs-overlay,
     ...
