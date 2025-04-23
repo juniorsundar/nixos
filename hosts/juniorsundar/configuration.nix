@@ -75,5 +75,6 @@
 
     # App Suites
     libreoffice
+    vscode
   ];
 }
