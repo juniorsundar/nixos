@@ -15,6 +15,7 @@
     pavucontrol
 
     inkscape-with-extensions
+    starship
   ];
 
   programs.git = {

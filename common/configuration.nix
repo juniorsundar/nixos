@@ -73,7 +73,6 @@
     lazygit
     zellij
     neovim
-    kitty
     pulsemixer
     wezterm
     networkmanagerapplet
