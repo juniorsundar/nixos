@@ -9,12 +9,18 @@
     # wireless.enable = true;
   };
 
-  users.users = {
-    juniorsundar = (import ../../users/juniorsundar/system.nix) {
-      inherit pkgs;
+  users = {
+    users = {
+      juniorsundar = (import ../../users/juniorsundar/system.nix) {
+        inherit pkgs;
+      };
     };
+    extraGroups.docker.members = ["juniorsundar"];
   };
-  users.extraGroups.docker.members = ["juniorsundar"];
+
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
 
   #===== SERVICES
   services = {
@@ -56,25 +62,24 @@
     };
   };
 
-  environment.shells = with pkgs; [zsh bash];
-  #===== Host Packages
-  environment.systemPackages = with pkgs; [
-    # Important stuff
-    clang
-    gcc
-    go
-    psmisc
-    python3
-    glibc
-
-    zig
-
-    # fileSystems
-    ntfs3g
-    mosh
-
-    # App Suites
-    libreoffice
-    vscode
-  ];
+  environment = {
+    shells = with pkgs; [zsh bash];
+    #===== Host Packages
+    systemPackages = with pkgs; [
+      # Important stuff
+      clang
+      gcc
+      go
+      psmisc
+      python3
+      glibc
+      zig
+      # fileSystems
+      ntfs3g
+      mosh
+      # App Suites
+      libreoffice
+      vscode
+    ];
+  };
 }

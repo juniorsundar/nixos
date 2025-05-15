@@ -3,10 +3,15 @@
   pkgs,
   ...
 }: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.printing.enable = true;
-  services.tailscale.enable = true;
-  services.openssh.enable = true;
+  nix.settings = {
+    system-features = [
+      "nixos-test"
+      "benchmark"
+      "big-parallel"
+      "kvm"
+    ];
+    experimental-features = ["nix-command" "flakes"];
+  };
   nixpkgs.config.allowUnfree = true;
   virtualisation.docker.enable = true;
 
@@ -30,21 +35,27 @@
     variables.MANPAGER = "nvim +Man!";
   };
 
-  services.flatpak = {
-    enable = true;
-    packages = [
-      {
-        appId = "com.stremio.Stremio";
-        origin = "flathub";
-      }
-      {
-        appId = "md.obsidian.Obsidian";
-        origin = "flathub";
-      }
-    ];
-    update.auto = {
+  services = {
+    printing.enable = true;
+    tailscale.enable = true;
+    openssh.enable = true;
+
+    flatpak = {
       enable = true;
-      onCalendar = "weekly";
+      packages = [
+        {
+          appId = "com.stremio.Stremio";
+          origin = "flathub";
+        }
+        {
+          appId = "md.obsidian.Obsidian";
+          origin = "flathub";
+        }
+      ];
+      update.auto = {
+        enable = true;
+        onCalendar = "weekly";
+      };
     };
   };
 
@@ -85,5 +96,5 @@
     zsh.enable = true;
   };
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
