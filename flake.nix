@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs"; # Ensures nix-darwin uses the same nixpkgs
+    };
+
     dotfiles = {
       url = "github:juniorsundar/dotfiles?ref=main"; # Your submodule
       flake = false;
@@ -26,6 +31,7 @@
     self,
     nix-flatpak,
     nixpkgs,
+    nix-darwin,
     home-manager,
     dotfiles,
     emacs-overlay,
@@ -37,7 +43,8 @@
         system = "x86_64-linux";
         modules = [
           # Common base configuration
-          ./common/configuration.nix
+          ./common/base-common.nix
+          ./common/linux-common.nix
           ./common/hardware.nix
 
           # Host-specific configuration
@@ -75,5 +82,16 @@
 
       # anotherHost = ... {};
     };
-  };
+        darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
+            specialArgs = {
+                flakeSelf = self;
+            };
+
+            modules = [ 
+
+            ./common/base-common.nix
+            ./common/mac-common.nix
+            ];
+        };
+    };
 }
