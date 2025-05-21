@@ -15,6 +15,16 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures nix-darwin uses the same nixpkgs
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
 
     dotfiles = {
       url = "github:juniorsundar/dotfiles?ref=main"; # Your submodule
@@ -32,6 +42,9 @@
     nix-flatpak,
     nixpkgs,
     nix-darwin,
+    nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
     home-manager,
     dotfiles,
     emacs-overlay,
@@ -85,13 +98,18 @@
     darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
       specialArgs = {
         flakeSelf = self;
+        inherit inputs;
       };
 
       modules = [
         ./common/base-common.nix
         ./common/mac-common.nix
 
+        nix-homebrew.darwinModules.nix-homebrew
         ./hosts/juniorsundar-macbook/configuration.nix
+        ./hosts/juniorsundar-macbook/homebrew.nix
+
+        ./users/juniorsundar/homebrew.nix
       ];
     };
   };
