@@ -46,6 +46,4 @@
   programs = {
     zsh.enable = true;
   };
-
 }
-

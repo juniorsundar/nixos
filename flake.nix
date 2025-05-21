@@ -82,16 +82,15 @@
 
       # anotherHost = ... {};
     };
-        darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
-            specialArgs = {
-                flakeSelf = self;
-            };
+    darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        flakeSelf = self;
+      };
 
-            modules = [ 
-
-            ./common/base-common.nix
-            ./common/mac-common.nix
-            ];
-        };
+      modules = [
+        ./common/base-common.nix
+        ./common/mac-common.nix
+      ];
     };
+  };
 }
