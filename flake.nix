@@ -90,6 +90,8 @@
       modules = [
         ./common/base-common.nix
         ./common/mac-common.nix
+
+        ./hosts/juniorsundar-macbook/configuration.nix
       ];
     };
   };
