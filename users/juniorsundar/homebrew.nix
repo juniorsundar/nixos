@@ -1,9 +1,16 @@
-# ./hosts/juniorsundar-macbook/configuration.nix
-{ inputs, config, lib, pkgs, flakeSelf, ... }: # Receives inputs and flakeSelf from specialArgs
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  flakeSelf,
+  ...
+}: {
   homebrew = {
-      enable = true;
-      user = "juniorsundar";
+    enable = true;
+    user = "juniorsundar";
+    casks = [
+      "raspberry-pi-imager"
+    ];
   };
 }
-
