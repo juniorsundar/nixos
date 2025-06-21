@@ -41,6 +41,7 @@
     neovim
     starship
     wezterm
+    uv
   ];
 
   programs = {

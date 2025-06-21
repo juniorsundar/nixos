@@ -11,6 +11,7 @@
     user = "juniorsundar";
     casks = [
       "raspberry-pi-imager"
+      "discord"
     ];
   };
 }
