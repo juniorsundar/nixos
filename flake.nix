@@ -3,7 +3,7 @@
 
   inputs = {
     # NixOS official package source, using the nixos-24.11 branch here
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     home-manager = {
@@ -13,6 +13,7 @@
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
+      # url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures nix-darwin uses the same nixpkgs
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
@@ -24,7 +25,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-
 
     dotfiles = {
       url = "github:juniorsundar/dotfiles?ref=main"; # Your submodule

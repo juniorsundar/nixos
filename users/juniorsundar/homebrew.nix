@@ -12,6 +12,7 @@
     casks = [
       "raspberry-pi-imager"
       "discord"
+      "spotify"
     ];
   };
 }
