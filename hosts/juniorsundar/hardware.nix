@@ -55,6 +55,11 @@
       enable32Bit = true;
     };
 
-    nvidia-container-toolkit.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+
+    nvidia-container-toolkit.enable = false;
   };
 }

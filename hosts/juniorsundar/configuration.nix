@@ -24,6 +24,9 @@
 
   #===== SERVICES
   services = {
+
+    blueman.enable = true;
+
     syncthing = {
       enable = true;
       dataDir = "/home/juniorsundar/Dropbox/";
