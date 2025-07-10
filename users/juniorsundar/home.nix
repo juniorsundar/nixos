@@ -17,22 +17,21 @@
     inkscape-with-extensions
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "juniorsundar";
-    userEmail = "juniorsundar@gmail.com";
-  };
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs-unstable;
-    extraPackages = epkgs: [
-      epkgs.treesit-grammars.with-all-grammars
-    ];
-  };
-
-  # Enable Home Manager
-  programs.home-manager = {
-    enable = true;
+  programs = {
+    git = {
+      enable = true;
+      userName = "juniorsundar";
+      userEmail = "juniorsundar@gmail.com";
+    };
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-unstable;
+      extraPackages = epkgs: [
+        epkgs.treesit-grammars.with-all-grammars
+      ];
+    };
+    home-manager = {
+      enable = true;
+    };
   };
 }
