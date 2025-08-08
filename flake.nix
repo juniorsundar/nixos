@@ -35,6 +35,10 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wezterm = {
+      url = "github:wezterm/wezterm?dir=nix";
+    };
   };
 
   outputs = {

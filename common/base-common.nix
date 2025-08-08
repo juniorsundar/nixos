@@ -3,7 +3,18 @@
   pkgs,
   ...
 }: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    settings.experimental-features = ["nix-command" "flakes"];
+    optimise = {
+      automatic = true;
+      dates = [ "23:00" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
+  };
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Asia/Dubai";

@@ -3,13 +3,15 @@
   pkgs,
   ...
 }: {
-  nix.settings = {
-    system-features = [
-      "nixos-test"
-      "benchmark"
-      "big-parallel"
-      "kvm"
-    ];
+  nix = {
+    settings = {
+      system-features = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+    };
   };
   virtualisation.docker.enable = true;
 
