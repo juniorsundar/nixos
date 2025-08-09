@@ -39,28 +39,14 @@
 
     libinput.enable = true;
     xserver = {
-      enable = true;
-
       xkb = {
         layout = "us";
         variant = "";
       };
 
       videoDrivers = ["nvidia"];
-      # desktopManager = {
-      #   xterm.enable = false;
-      # };
     };
 
-    desktopManager = {
-      plasma6.enable = true;
-    };
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-    };
   };
 
   environment = {

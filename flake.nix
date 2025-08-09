@@ -67,7 +67,9 @@
           # Host-specific configuration
           ./hosts/juniorsundar/configuration.nix
           ./hosts/juniorsundar/hardware.nix
-
+          
+          # Display Manager
+          ./modules/desktop-managers/plasma6.nix
           # Overlays
           ({
             config,

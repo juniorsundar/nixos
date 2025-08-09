@@ -10,10 +10,6 @@
 
   # Install packages
   home.packages = with pkgs; [
-    wl-clipboard
-    playerctl
-    pavucontrol
-
     inkscape-with-extensions
   ];
 
