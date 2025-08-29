@@ -56,11 +56,9 @@
       # Important stuff
       clang
       gcc
-      go
       psmisc
       python3
       glibc
-      zig
       # fileSystems
       ntfs3g
       mosh
