@@ -49,8 +49,8 @@
     zellij
     neovim
     starship
-    wezterm
-    uv
+    # wezterm
+    kitty
   ];
 
   programs = {

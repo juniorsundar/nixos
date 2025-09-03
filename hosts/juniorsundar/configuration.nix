@@ -59,12 +59,15 @@
       psmisc
       python3
       glibc
+      nodejs
+      uv
       # fileSystems
       ntfs3g
       mosh
       # App Suites
       libreoffice
       vscode
+      tree-sitter
     ];
   };
 
