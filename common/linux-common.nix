@@ -1,16 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   nix = {
     settings = {
-      system-features = [
-        "nixos-test"
-        "benchmark"
-        "big-parallel"
-        "kvm"
-      ];
+      system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     };
   };
   virtualisation.docker.enable = true;
@@ -50,7 +41,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
   services = {
@@ -59,10 +50,7 @@
     openssh.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    pulsemixer
-    networkmanagerapplet
-  ];
+  environment.systemPackages = with pkgs; [ pulsemixer networkmanagerapplet ];
 
   programs = {
     firefox.enable = true;

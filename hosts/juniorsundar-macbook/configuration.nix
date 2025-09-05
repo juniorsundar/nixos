@@ -1,11 +1,3 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [
-    obsidian
-    vscode
-  ];
+{ config, pkgs, lib, ... }: {
+  environment.systemPackages = with pkgs; [ obsidian vscode ];
 }

@@ -1,10 +1,4 @@
-{
-  flakeSelf,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{ flakeSelf, config, pkgs, lib, ... }: {
   system.configurationRevision = flakeSelf.rev or flakeSelf.dirtyRev or null;
   system.stateVersion = 6;
   system.activationScripts.applications.text = let
@@ -13,24 +7,24 @@
       paths = config.environment.systemPackages;
       pathsToLink = "/Applications";
     };
-  in
-    pkgs.lib.mkForce ''
-      # Set up applications.
-              echo "setting up /Applications..." >&2
-              rm -rf /Applications/Nix\ Apps
-              mkdir -p /Applications/Nix\ Apps
-              find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-              while read -r src; do
-                  app_name=$(basename "$src")
-                      echo "copying $src" >&2
-                      ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-                      done
-    '';
+  in pkgs.lib.mkForce ''
+    # Set up applications.
+            echo "setting up /Applications..." >&2
+            rm -rf /Applications/Nix\ Apps
+            mkdir -p /Applications/Nix\ Apps
+            find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+            while read -r src; do
+                app_name=$(basename "$src")
+                    echo "copying $src" >&2
+                    ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+                    done
+  '';
 
-  environment.systemPackages = with pkgs; [
-    # Functional
-    mkalias
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      # Functional
+      mkalias
+    ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 }

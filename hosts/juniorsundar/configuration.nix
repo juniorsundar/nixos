@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   networking = {
     networkmanager.enable = true;
     hostName = "juniorsundar";
@@ -11,16 +7,13 @@
 
   users = {
     users = {
-      juniorsundar = (import ../../users/juniorsundar/system.nix) {
-        inherit pkgs;
-      };
+      juniorsundar =
+        (import ../../users/juniorsundar/system.nix) { inherit pkgs; };
     };
-    extraGroups.docker.members = ["juniorsundar"];
+    extraGroups.docker.members = [ "juniorsundar" ];
   };
 
-  boot.binfmt.emulatedSystems = [
-    "aarch64-linux"
-  ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   #===== SERVICES
   services = {
@@ -44,13 +37,13 @@
         variant = "";
       };
 
-      videoDrivers = ["nvidia"];
+      videoDrivers = [ "nvidia" ];
     };
 
   };
 
   environment = {
-    shells = with pkgs; [zsh bash];
+    shells = with pkgs; [ zsh bash ];
     #===== Host Packages
     systemPackages = with pkgs; [
       # Important stuff
@@ -73,8 +66,11 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall =
+      true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall =
+      true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall =
+      true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 }

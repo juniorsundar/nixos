@@ -1,10 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   nix = {
-    settings.experimental-features = ["nix-command" "flakes"];
+    settings.experimental-features = [ "nix-command" "flakes" ];
     optimise = {
       automatic = true;
       dates = [ "23:00" ];
@@ -24,9 +20,7 @@
     variables.MANPAGER = "nvim +Man!";
   };
 
-  services = {
-    openssh.enable = true;
-  };
+  services = { openssh.enable = true; };
 
   environment.systemPackages = with pkgs; [
     # Functional
@@ -53,7 +47,5 @@
     kitty
   ];
 
-  programs = {
-    zsh.enable = true;
-  };
+  programs = { zsh.enable = true; };
 }
