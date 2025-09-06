@@ -6,6 +6,8 @@
     mako
     playerctl
     pavucontrol
+    rofi-wayland
+    waybar
   ];
 
   services.gnome.gnome-keyring.enable = true;
