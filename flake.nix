@@ -83,6 +83,42 @@
           ];
         };
 
+	juniorsundar-office = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            # Common base configuration
+            ./common/base-common.nix
+            ./common/linux-common.nix
+            ./common/hardware.nix
+
+            # Host-specific configuration
+            ./hosts/juniorsundar-office/configuration.nix
+            ./hosts/juniorsundar-office/hardware.nix
+
+            # Display Manager
+            ./modules/desktop-managers/plasma6.nix
+            # Overlays
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+            })
+
+            # External modules
+            nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; }; # Pass inputs here
+                users = {
+                  juniorsundar-nix = import ./users/juniorsundar-nix/home.nix;
+                  # anotherUser = import ./...;
+                };
+              };
+            }
+          ];
+	};
         # anotherHost = ... {};
       };
       darwinConfigurations."juniorsundar-macbook" =
