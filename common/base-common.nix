@@ -45,7 +45,6 @@
     starship
     # wezterm
     kitty
-    calibre
   ];
 
   programs = { zsh.enable = true; };
