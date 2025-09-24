@@ -40,11 +40,14 @@
     eza
     zoxide
     lazygit
-    zellij
+    # zellij
+    tmux
+    gum
     neovim
     starship
     # wezterm
     kitty
+    nixd
   ];
 
   programs = { zsh.enable = true; };
