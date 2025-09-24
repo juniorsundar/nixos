@@ -50,7 +50,11 @@
     openssh.enable = true;
   };
 
-environment.systemPackages = with pkgs; [ pulsemixer networkmanagerapplet calibre];
+  environment.systemPackages = with pkgs; [
+    pulsemixer
+    networkmanagerapplet
+    # calibre
+  ];
 
   programs = {
     firefox.enable = true;
