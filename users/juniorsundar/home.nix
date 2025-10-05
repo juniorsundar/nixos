@@ -13,13 +13,13 @@
       userName = "juniorsundar";
       userEmail = "juniorsundar@gmail.com";
     };
-    # emacs = {
-    #   enable = true;
-    #   package = pkgs.emacs-unstable;
-    #   extraPackages = epkgs: [
-    #     epkgs.treesit-grammars.with-all-grammars
-    #   ];
-    # };
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-git;
+      extraPackages = epkgs: [
+        epkgs.treesit-grammars.with-all-grammars
+      ];
+    };
     home-manager = { enable = true; };
   };
 }
