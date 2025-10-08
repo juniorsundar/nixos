@@ -38,12 +38,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wezterm = { url = "github:wezterm/wezterm?dir=nix"; };
+    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
   };
 
   outputs = { self, nix-flatpak, nixpkgs, nix-darwin, nix-homebrew
-    , homebrew-core, homebrew-cask, home-manager, dotfiles, emacs-overlay, ...
-    }@inputs: {
+    , homebrew-core, homebrew-cask, home-manager, dotfiles, emacs-overlay
+    , emacs-lsp-booster, ... }@inputs: {
       # Hostname
       nixosConfigurations = {
         juniorsundar = nixpkgs.lib.nixosSystem {
@@ -83,7 +83,7 @@
           ];
         };
 
-	juniorsundar-office = nixpkgs.lib.nixosSystem {
+        juniorsundar-office = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             # Common base configuration
@@ -99,7 +99,10 @@
             ./modules/desktop-managers/plasma6.nix
             # Overlays
             ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+              nixpkgs.overlays = [
+                emacs-overlay.overlays.default
+                emacs-lsp-booster.overlays.default
+              ];
             })
 
             # External modules
@@ -118,7 +121,7 @@
               };
             }
           ];
-	};
+        };
         # anotherHost = ... {};
       };
       darwinConfigurations."juniorsundar-macbook" =

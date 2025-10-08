@@ -5,7 +5,7 @@
   home.stateVersion = "25.11";
 
   # Install packages
-  home.packages = with pkgs; [ inkscape-with-extensions ];
+  home.packages = with pkgs; [ inkscape-with-extensions emacs-lsp-booster ];
 
   programs = {
     git = {
@@ -18,6 +18,7 @@
       package = pkgs.emacs-git;
       extraPackages = epkgs: [
         epkgs.treesit-grammars.with-all-grammars
+        epkgs.vterm
       ];
     };
     home-manager = { enable = true; };

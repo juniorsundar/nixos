@@ -54,6 +54,7 @@
       glibc
       nodejs
       uv
+      direnv
       # fileSystems
       ntfs3g
       mosh
