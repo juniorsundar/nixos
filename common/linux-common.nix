@@ -31,6 +31,10 @@
           appId = "md.obsidian.Obsidian";
           origin = "flathub";
         }
+        {
+          appId = "com.obsproject.Studio";
+          origin = "flathub";
+        }
       ];
       update.auto = {
         enable = true;
@@ -53,7 +57,7 @@
   environment.systemPackages = with pkgs; [
     pulsemixer
     networkmanagerapplet
-    # calibre
+    calibre
   ];
 
   programs = {
