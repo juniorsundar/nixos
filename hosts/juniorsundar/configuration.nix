@@ -8,7 +8,7 @@
   users = {
     users = {
       juniorsundar =
-        (import ../../users/juniorsundar/system.nix) { inherit pkgs; };
+        (import ../../users/common-system.nix) { inherit pkgs; };
     };
     extraGroups.docker.members = [ "juniorsundar" ];
   };
