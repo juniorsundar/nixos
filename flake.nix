@@ -75,7 +75,7 @@
                 backupFileExtension = "backup";
                 extraSpecialArgs = { inherit inputs; }; # Pass inputs here
                 users = {
-                  juniorsundar = import ./users/juniorsundar/home.nix;
+                  juniorsundar = import ./users/personal/home.nix;
                   # anotherUser = import ./...;
                 };
               };
@@ -115,7 +115,7 @@
                 backupFileExtension = "backup";
                 extraSpecialArgs = { inherit inputs; }; # Pass inputs here
                 users = {
-                  juniorsundar-nix = import ./users/juniorsundar-nix/home.nix;
+                  juniorsundar = import ./users/office/home.nix;
                   # anotherUser = import ./...;
                 };
               };

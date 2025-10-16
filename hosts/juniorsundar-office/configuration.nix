@@ -7,10 +7,10 @@
 
   users = {
     users = {
-      juniorsundar-nix =
+      juniorsundar =
         (import ../../users/common-system.nix) { inherit pkgs; };
     };
-    extraGroups.docker.members = [ "juniorsundar-nix" ];
+    extraGroups.docker.members = [ "juniorsundar" ];
   };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
