@@ -8,11 +8,6 @@
   home.packages = with pkgs; [ inkscape-with-extensions emacs-lsp-booster ];
 
   programs = {
-    git = {
-      enable = true;
-      userName = "juniorsundar";
-      userEmail = "juniorsundar@gmail.com";
-    };
     emacs = {
       enable = true;
       package = pkgs.emacs-git;
