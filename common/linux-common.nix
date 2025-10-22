@@ -2,6 +2,7 @@
   nix = {
     settings = {
       system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      trusted-users = [ "root" "juniorsundar" ];
     };
   };
   virtualisation.docker.enable = true;
