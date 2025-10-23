@@ -40,15 +40,18 @@
     };
 
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
+
+    wezterm.url = "github:wezterm/wezterm?dir=nix";
   };
 
   outputs = { self, nix-flatpak, nixpkgs, nix-darwin, nix-homebrew
     , homebrew-core, homebrew-cask, home-manager, dotfiles, emacs-overlay
-    , emacs-lsp-booster, ... }@inputs: {
+    , emacs-lsp-booster, wezterm, ... }@inputs: {
       # Hostname
       nixosConfigurations = {
         juniorsundar = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             # Common base configuration
             ./common/base-common.nix
@@ -86,6 +89,7 @@
 
         juniorsundar-office = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             # Common base configuration
             ./common/base-common.nix
