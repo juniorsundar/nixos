@@ -58,7 +58,7 @@
   environment.systemPackages = with pkgs; [
     pulsemixer
     networkmanagerapplet
-    calibre
+    # calibre
   ];
 
   programs = {
