@@ -46,7 +46,14 @@
 
   outputs = { self, nix-flatpak, nixpkgs, nix-darwin, nix-homebrew
     , homebrew-core, homebrew-cask, home-manager, dotfiles, emacs-overlay
-    , emacs-lsp-booster, wezterm, ... }@inputs: {
+    , emacs-lsp-booster, wezterm, ... }@inputs:
+    let
+      # Fetch dotfiles WITH submodules
+      dotfiles = builtins.fetchGit {
+        url = "https://github.com/juniorsundar/dotfiles";
+        rev = "55fb8a990493fc078109527f081bb5997492ac62";
+      };
+    in {
       # Hostname
       nixosConfigurations = {
         juniorsundar = nixpkgs.lib.nixosSystem {
@@ -77,7 +84,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; }; # Pass inputs here
+                extraSpecialArgs = {
+                  inherit inputs dotfiles;
+                }; # Pass inputs here
                 users = {
                   juniorsundar = import ./users/personal/home.nix;
                   # anotherUser = import ./...;
