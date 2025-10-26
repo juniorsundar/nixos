@@ -1,5 +1,4 @@
-{ config, pkgs, inputs, dotfiles, lib, ... }:
-{
+{ config, pkgs, inputs, dotfiles, lib, ... }: {
   home.file = {
     ".config/bat".source = "${dotfiles}/bat/.config/bat";
     ".config/btop".source = "${dotfiles}/btop/.config/btop";
@@ -8,8 +7,9 @@
     ".config/starship.toml".source = "${dotfiles}/starship/.config/starship.toml";
 
     ".bashrc".source = "${dotfiles}/bash/.bashrc";
-    ".bash_aliases".source =  "${dotfiles}/bash/.bash_aliases";
+    ".bash_aliases".source = "${dotfiles}/bash/.bash_aliases";
     ".gitconfig".source = "${dotfiles}/git/.gitconfig";
+    ".fzf-git.sh".source = "${dotfiles}/zsh/.fzf-git.sh";
   };
 
   imports = [ ../home-common.nix ];
