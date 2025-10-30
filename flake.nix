@@ -51,7 +51,7 @@
       # Fetch dotfiles WITH submodules
       dotfiles = builtins.fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
-        rev = "55fb8a990493fc078109527f081bb5997492ac62";
+        rev = "2f4c6530dac3bf2e1e762c7bc1417ff90e12dbc4";
       };
     in {
       # Hostname
@@ -127,7 +127,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; }; # Pass inputs here
+                extraSpecialArgs = {
+                  inherit inputs dotfiles;
+                }; # Pass inputs here
                 users = {
                   juniorsundar = import ./users/office/home.nix;
                   # anotherUser = import ./...;
