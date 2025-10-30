@@ -34,7 +34,7 @@
     ripgrep
     git
     delta
-    du-dust
+    dust
     fd
     bat
     eza
