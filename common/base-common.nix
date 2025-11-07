@@ -48,6 +48,7 @@
     # wezterm
     kitty
     nixd
+    gh
   ];
 
   programs = { zsh.enable = true; };
