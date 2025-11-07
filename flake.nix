@@ -39,19 +39,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
-
     wezterm.url = "github:wezterm/wezterm?dir=nix";
   };
 
   outputs = { self, nix-flatpak, nixpkgs, nix-darwin, nix-homebrew
     , homebrew-core, homebrew-cask, home-manager, dotfiles, emacs-overlay
-    , emacs-lsp-booster, wezterm, ... }@inputs:
+    , wezterm, ... }@inputs:
     let
       # Fetch dotfiles WITH submodules
       dotfiles = builtins.fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
-        rev = "2f4c6530dac3bf2e1e762c7bc1417ff90e12dbc4";
+        rev = "db05496db90a7b338d6cc98f1a18aa7547adaeab";
       };
     in {
       # Hostname
@@ -115,7 +113,6 @@
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
-                emacs-lsp-booster.overlays.default
               ];
             })
 
