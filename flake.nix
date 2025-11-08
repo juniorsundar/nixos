@@ -152,7 +152,7 @@
             ./hosts/juniorsundar-macbook/configuration.nix
             ./hosts/juniorsundar-macbook/homebrew.nix
 
-            ./users/juniorsundar/homebrew.nix
+            ./users/personal/homebrew.nix
           ];
         };
     };
