@@ -153,6 +153,17 @@
             ./hosts/juniorsundar-macbook/homebrew.nix
 
             ./users/personal/homebrew.nix
+           ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [
+                emacs-overlay.overlays.default
+              ];
+            })
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.juniorsundar = import ./users/personal/mac-home.nix;
+          }
           ];
         };
     };
