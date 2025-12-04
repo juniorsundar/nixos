@@ -4,7 +4,10 @@
   home.stateVersion = "25.11";
 
   # Install packages
-  home.packages = with pkgs; [ emacs-lsp-booster coreutils aporetic-bin];
+  home.packages = with pkgs; [ 
+    emacs-lsp-booster
+    coreutils
+  ];
   fonts.fontconfig.enable = true;
 
   programs = {
