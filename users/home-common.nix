@@ -19,5 +19,4 @@
     home-manager = { enable = true; };
   };
 
-  services.emacs.enable = true;
 }

@@ -35,7 +35,7 @@
 
     emacs-overlay = {
       url =
-        "github:nix-community/emacs-overlay?ref=9535ea88059f185b72480d7e7b0cbcdbf06b78a6";
+        "github:nix-community/emacs-overlay?ref=6f91e22329ed0b59ac491a81032abcc4414877c5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -49,7 +49,7 @@
       # Fetch dotfiles WITH submodules
       dotfiles = builtins.fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
-        rev = "db05496db90a7b338d6cc98f1a18aa7547adaeab";
+        rev = "7e5cf99e61099b99b18a210e30b5fa8a05dd6247";
       };
     in {
       # Hostname
