@@ -43,6 +43,7 @@
     zoxide
     lazygit
     # zellij
+    yazi
     tmux
     gum
     neovim
