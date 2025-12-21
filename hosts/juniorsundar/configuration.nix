@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   networking = {
     networkmanager.enable = true;
     hostName = "juniorsundar";
@@ -7,8 +8,7 @@
 
   users = {
     users = {
-      juniorsundar =
-        (import ../../users/common-system.nix) { inherit pkgs; };
+      juniorsundar = (import ../../users/common-system.nix) { inherit pkgs; };
     };
     extraGroups.docker.members = [ "juniorsundar" ];
   };
@@ -43,7 +43,10 @@
   };
 
   environment = {
-    shells = with pkgs; [ zsh bash ];
+    shells = with pkgs; [
+      zsh
+      bash
+    ];
     #===== Host Packages
     systemPackages = with pkgs; [
       # Important stuff
@@ -67,11 +70,8 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall =
-      true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall =
-      true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall =
-      true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 }

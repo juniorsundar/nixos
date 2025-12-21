@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, dotfiles, lib, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  dotfiles,
+  lib,
+  ...
+}:
+{
   home.file = {
     ".config/bat".source = "${dotfiles}/bat/.config/bat";
     ".config/btop".source = "${dotfiles}/btop/.config/btop";
