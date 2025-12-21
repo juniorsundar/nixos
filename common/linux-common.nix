@@ -1,8 +1,17 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   nix = {
     settings = {
-      system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      trusted-users = [ "root" "juniorsundar" ];
+      system-features = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+      trusted-users = [
+        "root"
+        "juniorsundar"
+      ];
     };
   };
   virtualisation.docker.enable = true;

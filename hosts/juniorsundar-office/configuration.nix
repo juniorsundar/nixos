@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   networking = {
     networkmanager.enable = true;
     hostName = "juniorsundar-office";
@@ -7,8 +8,7 @@
 
   users = {
     users = {
-      juniorsundar =
-        (import ../../users/common-system.nix) { inherit pkgs; };
+      juniorsundar = (import ../../users/common-system.nix) { inherit pkgs; };
     };
     extraGroups.docker.members = [ "juniorsundar" ];
   };
@@ -26,13 +26,16 @@
         variant = "";
       };
 
-#      videoDrivers = [ "nvidia" ];
+      #      videoDrivers = [ "nvidia" ];
     };
 
   };
 
   environment = {
-    shells = with pkgs; [ zsh bash ];
+    shells = with pkgs; [
+      zsh
+      bash
+    ];
     #===== Host Packages
     systemPackages = with pkgs; [
       # Important stuff
