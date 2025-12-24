@@ -29,6 +29,17 @@
   services = {
     blueman.enable = true;
 
+    syncthing = {
+      enable = true;
+      dataDir = "/home/juniorsundar/Dropbox/";
+      openDefaultPorts = true;
+      configDir = "/home/juniorsundar/.config/syncthing";
+      user = "juniorsundar";
+      group = "users";
+      guiAddress = "0.0.0.0:8384";
+      # declarative = { SNIPPED };
+    };
+
     libinput.enable = true;
     xserver = {
       xkb = {
@@ -36,7 +47,7 @@
         variant = "";
       };
 
-      #      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "nvidia" ];
     };
 
   };
@@ -47,28 +58,26 @@
       bash
     ];
     #===== Host Packages
-    systemPackages =
-      with pkgs;
-      [
-        # Important stuff
-        clang
-        gcc
-        psmisc
-        python3
-        glibc
-        nodejs
-        uv
-        expect
-        # fileSystems
-        ntfs3g
-        mosh
-        # App Suites
-        libreoffice
-        vscode
-        tree-sitter
+    systemPackages = with pkgs; [
+      # Important stuff
+      clang
+      gcc
+      psmisc
+      python3
+      glibc
+      nodejs
+      uv
+      expect
+      # fileSystems
+      ntfs3g
+      mosh
+      # App Suites
+      libreoffice
+      vscode
+      tree-sitter
 
-        microsoft-edge
-      ];
+      microsoft-edge
+    ];
   };
 
 }
