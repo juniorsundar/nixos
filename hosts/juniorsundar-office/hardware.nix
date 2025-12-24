@@ -8,8 +8,8 @@
   };
 
   hardware = {
-    #    nvidia = {
-    #      open = false;
+       nvidia = {
+         open = false;
     # prime = {
     #   offload = {
     #     enable = true;
@@ -18,14 +18,14 @@
     #   amdgpuBusId = "PCI:6:0:0";
     #   nvidiaBusId = "PCI:1:0:0";
     # };
-    #      modesetting.enable = true;
-    #      powerManagement = {
-    #        enable = true;
-    #        finegrained = false;
-    #      };
-    #      nvidiaSettings = true;
-    #      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    #    };
+         modesetting.enable = true;
+         powerManagement = {
+           enable = true;
+           finegrained = false;
+         };
+         nvidiaSettings = true;
+         package = config.boot.kernelPackages.nvidiaPackages.stable;
+       };
 
     graphics = {
       enable = true;
@@ -37,6 +37,6 @@
       powerOnBoot = true;
     };
 
-    #    nvidia-container-toolkit.enable = false;
+       nvidia-container-toolkit.enable = false;
   };
 }
