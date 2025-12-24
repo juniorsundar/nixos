@@ -1,7 +1,17 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openconnect
+      ];
+    };
     hostName = "juniorsundar-office";
     # wireless.enable = true;
   };
@@ -37,23 +47,28 @@
       bash
     ];
     #===== Host Packages
-    systemPackages = with pkgs; [
-      # Important stuff
-      clang
-      gcc
-      psmisc
-      python3
-      glibc
-      nodejs
-      uv
-      # fileSystems
-      ntfs3g
-      mosh
-      # App Suites
-      libreoffice
-      vscode
-      tree-sitter
-    ];
+    systemPackages =
+      with pkgs;
+      [
+        # Important stuff
+        clang
+        gcc
+        psmisc
+        python3
+        glibc
+        nodejs
+        uv
+        expect
+        # fileSystems
+        ntfs3g
+        mosh
+        # App Suites
+        libreoffice
+        vscode
+        tree-sitter
+
+        microsoft-edge
+      ];
   };
 
 }
