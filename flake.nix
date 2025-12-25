@@ -80,7 +80,6 @@
             # Common base configuration
             ./common/base-common.nix
             ./common/linux-common.nix
-            ./common/hardware.nix
 
             # Host-specific configuration
             ./hosts/${hostname}/configuration.nix
@@ -120,7 +119,11 @@
           users = {
             juniorsundar = import ./users/personal/home.nix;
           };
-          extraModules = [ ./modules/desktop-managers/plasma6.nix ];
+          extraModules = [
+            ./modules/desktop-managers/plasma6.nix
+            ./modules/sound/pipewire.nix
+            ./modules/hardware/nvidia.nix
+          ];
         };
 
         juniorsundar-office = mkNixosSystem {
@@ -132,7 +135,11 @@
             gemini-overlay
             emacs-mirror-overlay
           ];
-          extraModules = [ ./modules/desktop-managers/plasma6.nix ];
+          extraModules = [
+            ./modules/desktop-managers/plasma6.nix
+            ./modules/sound/pipewire.nix
+            ./modules/hardware/nvidia.nix
+          ];
         };
       };
 
