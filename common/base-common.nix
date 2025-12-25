@@ -31,6 +31,7 @@
   environment.systemPackages = with pkgs; [
     # Functional
     unzip
+    lsof
     wget
     imagemagick
     luarocks
@@ -58,6 +59,7 @@
     nixfmt
     nh
     gh
+    gemini-cli
   ];
 
   programs = {
