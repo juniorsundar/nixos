@@ -17,23 +17,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1766583102,
-        "narHash": "sha256-mtlIrcahD4aG1QrLffu6lO56Eig+W3nhV8k0QfZAsv4=",
-        "owner": "juniorsundar",
-        "repo": "dotfiles",
-        "rev": "8b7a0b07bbdc7be0c1e995cd8256a7eea10c8fc6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "juniorsundar",
-        "ref": "main",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -281,7 +264,6 @@
     },
     "root": {
       "inputs": {
-        "dotfiles": "dotfiles",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
