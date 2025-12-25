@@ -1,53 +1,29 @@
+{ pkgs, dotfiles, ... }:
 {
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
-{
-  home.username = "juniorsundar"; # Replace with your actual username
-  home.homeDirectory = "/home/juniorsundar"; # Adjust for macOS (/Users/username)
+  imports = [
+    ./modules/emacs.nix
+  ];
+
+  home.username = "juniorsundar";
+  home.homeDirectory = "/home/juniorsundar";
   home.stateVersion = "25.11";
+
+  home.file = {
+    ".config/bat".source = "${dotfiles}/bat/.config/bat";
+    ".config/btop".source = "${dotfiles}/btop/.config/btop";
+    ".config/delta".source = "${dotfiles}/delta/.config/delta";
+    ".config/lazygit".source = "${dotfiles}/lazygit/.config/lazygit";
+    ".config/starship.toml".source = "${dotfiles}/starship/.config/starship.toml";
+
+    ".bashrc".source = "${dotfiles}/bash/.bashrc";
+    ".bash_aliases".source = "${dotfiles}/bash/.bash_aliases";
+    ".fzf-git.sh".source = "${dotfiles}/zsh/.fzf-git.sh";
+  };
 
   # Install packages
   home.packages = with pkgs; [
     inkscape-with-extensions
-    emacs-lsp-booster
   ];
 
-  programs = {
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-git;
-      extraPackages = epkgs: [
-        (epkgs.treesit-grammars.with-grammars (
-          grammars: with grammars; [
-            tree-sitter-bash
-            tree-sitter-c
-            tree-sitter-cpp
-            tree-sitter-dockerfile
-            tree-sitter-go
-            tree-sitter-html
-            tree-sitter-javascript
-            tree-sitter-json
-            tree-sitter-lua
-            tree-sitter-markdown
-            tree-sitter-nix
-            tree-sitter-python
-            tree-sitter-rust
-            tree-sitter-toml
-            tree-sitter-tsx
-            tree-sitter-typescript
-            tree-sitter-yaml
-            tree-sitter-nix
-          ]
-        ))
-        epkgs.vterm
-      ];
-    };
-    home-manager = {
-      enable = true;
-    };
-  };
-
+  programs.home-manager.enable = true;
 }
