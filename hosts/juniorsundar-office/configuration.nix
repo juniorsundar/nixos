@@ -74,7 +74,7 @@
       glibc
       nodejs
       uv
-      expect
+      direnv
       # fileSystems
       ntfs3g
       mosh
