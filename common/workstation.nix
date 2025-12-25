@@ -15,12 +15,12 @@
   services = {
     blueman.enable = true;
 
-    syncthing = {
+    syncthing = let user = "juniorsundar"; in {
       enable = true;
-      dataDir = "/home/juniorsundar/Dropbox/";
+      dataDir = "/home/${user}/Dropbox/";
       openDefaultPorts = true;
-      configDir = "/home/juniorsundar/.config/syncthing";
-      user = "juniorsundar";
+      configDir = "/home/${user}/.config/syncthing";
+      inherit user;
       group = "users";
       guiAddress = "0.0.0.0:8384";
     };
