@@ -61,134 +61,81 @@
         rev = "7e5cf99e61099b99b18a210e30b5fa8a05dd6247";
       };
 
-      emacs-mirror-overlay = final: prev: {
-        emacs-git = prev.emacs-git.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "emacs-mirror";
-            repo = "emacs";
-            rev = "54ae1944e95c77be6492d69792413e507c2dfdb0";
-            hash = "sha256-wX7bTEfbjbklB2+0CjFULvTwE/WXMuS/4VejORloFZo=";
-          };
-        });
-      };
+      emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
+      gemini-overlay = import ./overlays/gemini.nix;
 
-      gemini-overlay = final: prev: {
-        gemini-cli = prev.buildNpmPackage rec {
-          pname = "gemini-cli";
-          version = "0.22.2";
+      # Helper function to create a NixOS system
+      mkNixosSystem =
+        {
+          hostname,
+          users,
+          system ? "x86_64-linux",
+          extraOverlays ? [ ],
+          extraModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            # Common base configuration
+            ./common/base-common.nix
+            ./common/linux-common.nix
+            ./common/hardware.nix
 
-          src = prev.fetchFromGitHub {
-            owner = "google-gemini";
-            repo = "gemini-cli";
-            rev = "v${version}";
-            hash = "sha256-wVIGMkft/hamsuyJH+Ku8vIAZ2ITMfH9LqmtUIP8xN0=";
-          };
+            # Host-specific configuration
+            ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}/hardware.nix
 
-          npmDepsHash = "sha256-gyv2yVTNPuwEiWDXfYr21wc+Sii5ac8nRE/04KkPmJg=";
-          nativeBuildInputs = [ prev.pkg-config ];
-          buildInputs = [ prev.libsecret ];
-          postInstall = ''
-            cp -r packages $out/lib/node_modules/@google/gemini-cli/
-          '';
+            # Overlays
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [ emacs-overlay.overlays.default ] ++ extraOverlays;
+              }
+            )
 
-          makeCacheWritable = true;
+            # External modules
+            nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  inherit inputs dotfiles;
+                };
+                inherit users;
+              };
+            }
+          ]
+          ++ extraModules;
         };
-      };
     in
     {
       # Hostname
       nixosConfigurations = {
-        juniorsundar = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Common base configuration
-            ./common/base-common.nix
-            ./common/linux-common.nix
-            ./common/hardware.nix
-
-            # Host-specific configuration
-            ./hosts/juniorsundar/configuration.nix
-            ./hosts/juniorsundar/hardware.nix
-
-            # Display Manager
-            ./modules/desktop-managers/plasma6.nix
-            # Overlays
-            (
-              { config, pkgs, ... }:
-              {
-                nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-              }
-            )
-
-            # External modules
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = {
-                  inherit inputs dotfiles;
-                }; # Pass inputs here
-                users = {
-                  juniorsundar = import ./users/personal/home.nix;
-                  # anotherUser = import ./...;
-                };
-              };
-            }
-          ];
+        juniorsundar = mkNixosSystem {
+          hostname = "juniorsundar";
+          users = {
+            juniorsundar = import ./users/personal/home.nix;
+          };
+          extraModules = [ ./modules/desktop-managers/plasma6.nix ];
         };
 
-        juniorsundar-office = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Common base configuration
-            ./common/base-common.nix
-            ./common/linux-common.nix
-            ./common/hardware.nix
-
-            # Host-specific configuration
-            ./hosts/juniorsundar-office/configuration.nix
-            ./hosts/juniorsundar-office/hardware.nix
-
-            # Display Manager
-            ./modules/desktop-managers/plasma6.nix
-            # Overlays
-            (
-              { config, pkgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  gemini-overlay
-                  emacs-overlay.overlays.default
-                  emacs-mirror-overlay
-                ];
-              }
-            )
-
-            # External modules
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = {
-                  inherit inputs dotfiles;
-                }; # Pass inputs here
-                users = {
-                  juniorsundar = import ./users/office/home.nix;
-                  # anotherUser = import ./...;
-                };
-              };
-            }
+        juniorsundar-office = mkNixosSystem {
+          hostname = "juniorsundar-office";
+          users = {
+            juniorsundar = import ./users/office/home.nix;
+          };
+          extraOverlays = [
+            gemini-overlay
+            emacs-mirror-overlay
           ];
+          extraModules = [ ./modules/desktop-managers/plasma6.nix ];
         };
-        # anotherHost = ... {};
       };
+
       darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
         specialArgs = {
           flakeSelf = self;
