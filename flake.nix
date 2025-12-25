@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "Junior's Single Source of Truth";
 
   inputs = {
     # NixOS official package source, using the nixos-24.11 branch here
@@ -59,6 +59,17 @@
       dotfiles = builtins.fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
         rev = "7e5cf99e61099b99b18a210e30b5fa8a05dd6247";
+      };
+
+      emacsMirrorOverlay = final: prev: {
+        emacs-git = prev.emacs-git.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "emacs-mirror";
+            repo = "emacs";
+            rev = "54ae1944e95c77be6492d69792413e507c2dfdb0";
+            hash = "sha256-wX7bTEfbjbklB2+0CjFULvTwE/WXMuS/4VejORloFZo=";
+          };
+        });
       };
     in
     {
@@ -128,6 +139,7 @@
               {
                 nixpkgs.overlays = [
                   emacs-overlay.overlays.default
+                  emacsMirrorOverlay
                 ];
               }
             )
