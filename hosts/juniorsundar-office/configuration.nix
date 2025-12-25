@@ -29,6 +29,13 @@
   services = {
     blueman.enable = true;
 
+    flatpak.packages = [
+      {
+        appId = "com.prusa3d.PrusaSlicer";
+        origin = "flathub";
+      }
+    ];
+
     syncthing = {
       enable = true;
       dataDir = "/home/juniorsundar/Dropbox/";
