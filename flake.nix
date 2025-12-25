@@ -26,11 +26,6 @@
       flake = false;
     };
 
-    dotfiles = {
-      url = "github:juniorsundar/dotfiles?ref=main"; # Your submodule
-      flake = false;
-    };
-
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay?ref=6f91e22329ed0b59ac491a81032abcc4414877c5";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,12 +41,8 @@
       nixpkgs,
       nix-darwin,
       nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
       home-manager,
-      dotfiles,
       emacs-overlay,
-      wezterm,
       ...
     }@inputs:
     let
@@ -87,7 +78,7 @@
 
             # Overlays
             (
-              { config, pkgs, ... }:
+              { _config, _pkgs, ... }:
               {
                 nixpkgs.overlays = [ emacs-overlay.overlays.default ] ++ extraOverlays;
               }
@@ -159,7 +150,7 @@
 
           ./users/personal/homebrew.nix
           (
-            { config, pkgs, ... }:
+            { _config, _pkgs, ... }:
             {
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
