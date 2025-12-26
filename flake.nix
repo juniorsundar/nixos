@@ -47,9 +47,9 @@
     }@inputs:
     let
       # Fetch dotfiles WITH submodules
-      dotfiles = builtins.fetchGit {
+      dotfiles = fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
-        rev = "7e5cf99e61099b99b18a210e30b5fa8a05dd6247";
+        rev = "34cf89e806aed4e178fc3d68b29109c1d9b6fe4e";
       };
 
       emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
@@ -78,7 +78,7 @@
 
             # Overlays
             (
-              { _config, _pkgs, ... }:
+              { ... }:
               {
                 nixpkgs.overlays = [ emacs-overlay.overlays.default ] ++ extraOverlays;
               }
@@ -150,7 +150,7 @@
 
           ./users/personal/homebrew.nix
           (
-            { _config, _pkgs, ... }:
+            { ... }:
             {
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default

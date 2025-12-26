@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   # User Configuration
   users = {
@@ -15,15 +15,19 @@
   services = {
     blueman.enable = true;
 
-    syncthing = let user = "juniorsundar"; in {
-      enable = true;
-      dataDir = "/home/${user}/Dropbox/";
-      openDefaultPorts = true;
-      configDir = "/home/${user}/.config/syncthing";
-      inherit user;
-      group = "users";
-      guiAddress = "0.0.0.0:8384";
-    };
+    syncthing =
+      let
+        user = "juniorsundar";
+      in
+      {
+        enable = true;
+        dataDir = "/home/${user}/Dropbox/";
+        openDefaultPorts = true;
+        configDir = "/home/${user}/.config/syncthing";
+        inherit user;
+        group = "users";
+        guiAddress = "0.0.0.0:8384";
+      };
 
     libinput.enable = true;
     xserver = {
@@ -40,7 +44,7 @@
       zsh
       bash
     ];
-    
+
     systemPackages = with pkgs; [
       # Important stuff
       clang

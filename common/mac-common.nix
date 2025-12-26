@@ -2,7 +2,6 @@
   flakeSelf,
   config,
   pkgs,
-  lib,
   ...
 }:
 {
