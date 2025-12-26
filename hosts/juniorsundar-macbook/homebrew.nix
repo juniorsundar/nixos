@@ -1,11 +1,4 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  flakeSelf,
-  ...
-}:
+{ inputs, ... }:
 {
   nix-homebrew = {
     enable = true;

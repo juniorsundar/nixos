@@ -1,9 +1,4 @@
 {
-  inputs,
-  config,
-  lib,
-  pkgs,
-  flakeSelf,
   ...
 }:
 {
