@@ -110,6 +110,10 @@
           users = {
             juniorsundar = import ./users/personal/home.nix;
           };
+          extraOverlays = [
+            gemini-overlay
+            emacs-mirror-overlay
+          ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
             ./modules/sound/pipewire.nix
