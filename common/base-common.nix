@@ -50,7 +50,7 @@
     # zellij
     yazi
     tmux
-    gum
+    # gum
     neovim
     starship
     # wezterm
