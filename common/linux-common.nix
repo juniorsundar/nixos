@@ -67,11 +67,12 @@
   environment.systemPackages = with pkgs; [
     pulsemixer
     networkmanagerapplet
+    google-chrome
     # calibre
   ];
 
   programs = {
-    firefox.enable = true;
+    # firefox.enable = true;
     thunderbird.enable = true;
     nix-ld.enable = true;
   };
