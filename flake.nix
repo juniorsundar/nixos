@@ -80,7 +80,7 @@
             (
               { ... }:
               {
-                nixpkgs.overlays = [ emacs-overlay.overlays.default ] ++ extraOverlays;
+                nixpkgs.overlays = extraOverlays;
               }
             )
 
@@ -112,6 +112,7 @@
           };
           extraOverlays = [
             gemini-overlay
+            emacs-overlay.overlays.default
             emacs-mirror-overlay
           ];
           extraModules = [
@@ -128,6 +129,7 @@
           };
           extraOverlays = [
             gemini-overlay
+            emacs-overlay.overlays.default
             emacs-mirror-overlay
           ];
           extraModules = [
