@@ -40,6 +40,7 @@
     btop
     ripgrep
     git
+    jujutsu
     delta
     dust
     fd
