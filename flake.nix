@@ -160,6 +160,7 @@
             {
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
+                emacs-mirror-overlay
               ];
             }
           )
