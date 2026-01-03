@@ -60,10 +60,15 @@
     nixfmt
     nh
     gh
-    gemini-cli
   ];
 
   programs = {
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+    };
+    bash = {
+      enable = true;
+      completion.enable = true;
+    };
   };
 }

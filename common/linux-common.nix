@@ -68,6 +68,7 @@
     pulsemixer
     networkmanagerapplet
     google-chrome
+    gemini-cli
     # calibre
   ];
 
