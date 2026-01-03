@@ -10,5 +10,8 @@
       "discord"
       "spotify"
     ];
+    brews = [
+      "gemini-cli"
+    ];
   };
 }

@@ -11,6 +11,7 @@
   # Install packages
   home.packages = with pkgs; [
     coreutils
+    bash-completion
   ];
   fonts.fontconfig.enable = true;
 
