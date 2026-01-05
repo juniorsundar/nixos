@@ -14,4 +14,6 @@
     xorg.xhost
     kdePackages.kcalc
   ];
+
+  programs.kdeconnect.enable = true;
 }
