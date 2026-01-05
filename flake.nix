@@ -53,7 +53,6 @@
       };
 
       emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
-      gemini-overlay = import ./overlays/gemini.nix;
 
       # Helper function to create a NixOS system
       mkNixosSystem =
@@ -111,7 +110,6 @@
             juniorsundar = import ./users/personal/home.nix;
           };
           extraOverlays = [
-            gemini-overlay
             emacs-overlay.overlays.default
             emacs-mirror-overlay
           ];
@@ -128,7 +126,6 @@
             juniorsundar = import ./users/office/home.nix;
           };
           extraOverlays = [
-            gemini-overlay
             emacs-overlay.overlays.default
             emacs-mirror-overlay
           ];
