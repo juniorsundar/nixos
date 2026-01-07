@@ -14,7 +14,13 @@
       ];
     };
   };
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    extraPackages = [
+      pkgs.docker-buildx
+      pkgs.docker-compose
+    ];
+  };
 
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
