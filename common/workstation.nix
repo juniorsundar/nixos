@@ -9,7 +9,16 @@
   };
 
   # Boot settings
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt = {
+    emulatedSystems = [
+      "aarch64-linux"
+      "armv7l-linux"
+      "riscv64-linux"
+      "s390x-linux"
+    ];
+    preferStaticEmulators = true;
+    registrations."aarch64-linux".fixBinary = true;
+  };
 
   # Services
   services = {
