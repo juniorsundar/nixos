@@ -1,6 +1,15 @@
 { pkgs, ... }:
 {
   nix = {
+    optimise = {
+      automatic = true;
+      dates = [ "23:00" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
     settings = {
       system-features = [
         "nixos-test"
