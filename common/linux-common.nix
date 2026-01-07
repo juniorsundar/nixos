@@ -14,13 +14,6 @@
       ];
     };
   };
-  virtualisation.docker = {
-    enable = true;
-    extraPackages = [
-      pkgs.docker-buildx
-      pkgs.docker-compose
-    ];
-  };
 
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
@@ -75,6 +68,7 @@
     networkmanagerapplet
     google-chrome
     gemini-cli
+    poetry
     # calibre
   ];
 
@@ -82,6 +76,7 @@
     # firefox.enable = true;
     thunderbird.enable = true;
     nix-ld.enable = true;
+    ssh.startAgent = true;
   };
   system.stateVersion = "25.11"; # Did you read the comment?
 }
