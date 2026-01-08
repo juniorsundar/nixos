@@ -11,6 +11,8 @@
     };
     hostName = "juniorsundar-office";
     # wireless.enable = true;
+    firewall.trustedInterfaces = [ "wlp0s20f3" ];
+    # firewall.allowedTCPPorts = [ 8080 ];
   };
 
   services = {
