@@ -5,7 +5,6 @@
     users = {
       juniorsundar = (import ../users/common-system.nix) { inherit pkgs; };
     };
-    extraGroups.docker.members = [ "juniorsundar" ];
   };
 
   # Boot settings

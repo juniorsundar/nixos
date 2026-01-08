@@ -6,7 +6,6 @@
     "networkmanager"
     "wheel"
     "audio"
-    "docker"
   ];
   shell = pkgs.zsh; # Set login shell to Zsh
 }
