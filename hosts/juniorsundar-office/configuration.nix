@@ -27,5 +27,6 @@
   environment.systemPackages = with pkgs; [
     microsoft-edge
   ];
+  programs.qgroundcontrol.enable = true;
 
 }
