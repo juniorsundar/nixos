@@ -5,11 +5,7 @@
     user = "juniorsundar";
     enableRosetta = true;
 
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-    };
-    mutableTaps = false;
+    mutableTaps = true;
     autoMigrate = true;
   };
 }
