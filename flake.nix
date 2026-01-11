@@ -100,6 +100,56 @@
           ]
           ++ extraModules;
         };
+
+      # Helper function to create a nix-darwin system
+      mkDarwinSystem =
+        {
+          hostname,
+          users,
+          system ? "aarch64-darwin",
+          extraOverlays ? [ ],
+          extraModules ? [ ],
+        }:
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = {
+            flakeSelf = self;
+            inherit inputs;
+          };
+          modules = [
+            # Common base configuration
+            ./common/base-common.nix
+            ./common/mac-common.nix
+
+            # Host-specific configuration
+            nix-homebrew.darwinModules.nix-homebrew
+            ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}/homebrew.nix
+
+            # Overlays
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = extraOverlays;
+              }
+            )
+
+            # External modules
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  inherit inputs dotfiles;
+                };
+                inherit users;
+              };
+            }
+          ]
+          ++ extraModules;
+        };
     in
     {
       # Hostname
@@ -140,36 +190,17 @@
         };
       };
 
-      darwinConfigurations."juniorsundar-macbook" = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          flakeSelf = self;
-          inherit inputs;
+      darwinConfigurations."juniorsundar-macbook" = mkDarwinSystem {
+        hostname = "juniorsundar-macbook";
+        users = {
+          juniorsundar = import ./users/personal/mac-home.nix;
         };
-
-        modules = [
-          ./common/base-common.nix
-          ./common/mac-common.nix
-
-          nix-homebrew.darwinModules.nix-homebrew
-          ./hosts/juniorsundar-macbook/configuration.nix
-          ./hosts/juniorsundar-macbook/homebrew.nix
-
+        extraOverlays = [
+          emacs-overlay.overlays.default
+          emacs-mirror-overlay
+        ];
+        extraModules = [
           ./users/personal/homebrew.nix
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                emacs-overlay.overlays.default
-                emacs-mirror-overlay
-              ];
-            }
-          )
-          inputs.home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.juniorsundar = import ./users/personal/mac-home.nix;
-          }
         ];
       };
     };
