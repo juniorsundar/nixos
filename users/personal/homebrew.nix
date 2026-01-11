@@ -13,7 +13,7 @@
       "raspberry-pi-imager"
       "discord"
       "spotify"
-      "docker"
+      "docker-desktop"
       "zed"
     ];
     brews = [
