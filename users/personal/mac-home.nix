@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [
-    ../modules/emacs.nix
-  ];
+  imports = [];
 
   home.username = "juniorsundar";
   home.homeDirectory = pkgs.lib.mkForce "/Users/juniorsundar";
