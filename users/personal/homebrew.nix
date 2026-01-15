@@ -15,6 +15,7 @@
       "spotify"
       "docker-desktop"
       "zed"
+      "emacs-plus-app"
     ];
     brews = [
       "gemini-cli"
