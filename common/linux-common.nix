@@ -77,7 +77,6 @@
     networkmanagerapplet
     google-chrome
     gemini-cli
-    poetry
     # calibre
   ];
 
