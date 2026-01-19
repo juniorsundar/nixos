@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     microsoft-edge
+    devcontainer
   ];
   programs.qgroundcontrol.enable = true;
 
