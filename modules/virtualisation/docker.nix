@@ -18,13 +18,14 @@ in
   };
 
   config = {
+    boot.kernel.sysctl = {
+      "net.ipv4.ip_unprivileged_port_start" = 80;
+    };
+
     virtualisation.docker = {
       enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-        daemon.settings.features.cdi = lib.mkIf nvidiaEnabled true;
-      };
+      rootless.enable = false;
+
       extraPackages = [
         pkgs.docker-buildx
         pkgs.docker-compose
@@ -33,6 +34,14 @@ in
 
     hardware.nvidia-container-toolkit.enable = lib.mkIf nvidiaEnabled true;
 
-    users.users.${cfg.allowedUser}.extraGroups = [ "docker" ];
+    users.groups.docker = { };
+
+    users.users.${cfg.allowedUser} = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
+    };
   };
 }
