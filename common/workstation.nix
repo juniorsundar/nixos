@@ -68,8 +68,8 @@
       mosh
       # App Suites
       libreoffice
-      vscode
       tree-sitter
+      zed-editor
     ];
   };
 }
