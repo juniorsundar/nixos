@@ -45,9 +45,9 @@
     # gum
     neovim
     starship
-    # wezterm
+    wezterm
     # kitty
-    ghostty
+    # ghostty
     nixd
     nixfmt
     nh
