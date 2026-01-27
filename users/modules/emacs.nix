@@ -20,6 +20,7 @@
           tree-sitter-json
           tree-sitter-lua
           tree-sitter-markdown
+          tree-sitter-markdown-inline
           tree-sitter-nix
           tree-sitter-python
           tree-sitter-rust
