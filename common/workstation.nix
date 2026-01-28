@@ -56,6 +56,8 @@
     systemPackages = with pkgs; [
       # Important stuff
       clang
+      gnumake
+      cmake
       gcc
       psmisc
       python3
