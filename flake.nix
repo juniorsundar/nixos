@@ -37,8 +37,6 @@
     };
 
     wezterm.url = "github:wezterm/wezterm?dir=nix";
-
-    trump.url = "github:juniorsundar/trump";
   };
 
   outputs =

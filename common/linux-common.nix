@@ -77,7 +77,6 @@
     networkmanagerapplet
     google-chrome
     gemini-cli
-    inputs.trump.packages.${pkgs.stdenv.hostPlatform.system}.default
     # calibre
   ];
 
