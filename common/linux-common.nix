@@ -77,6 +77,7 @@
     networkmanagerapplet
     google-chrome
     gemini-cli
+    vlc
     # calibre
   ];
 
