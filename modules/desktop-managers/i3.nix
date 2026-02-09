@@ -21,7 +21,7 @@
         dunst
         brightnessctl
         xclip
-        xorg.xhost
+        xhost
       ];
     };
   };
