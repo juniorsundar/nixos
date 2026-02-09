@@ -9,7 +9,7 @@
     wl-clipboard
     playerctl
     pavucontrol
-    xorg.xhost
+    xhost
 
     gnome-tweaks
   ];

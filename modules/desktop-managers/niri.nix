@@ -19,6 +19,6 @@
     swayidle
     rofi
 
-    xorg.xhost
+    xhost
   ];
 }

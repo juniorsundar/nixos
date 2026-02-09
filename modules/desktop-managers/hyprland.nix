@@ -15,6 +15,6 @@
     pavucontrol
 
     # For X-Server only and forwarding
-    xorg.xhost
+    xhost
   ];
 }
