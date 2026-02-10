@@ -173,6 +173,7 @@
             ./modules/sound/pipewire.nix
             ./modules/hardware/nvidia.nix
             ./modules/virtualisation/docker.nix
+            ./modules/services/rclone-gdrive.nix
           ];
         };
 
