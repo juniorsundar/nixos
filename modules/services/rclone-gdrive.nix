@@ -7,33 +7,34 @@
     pkgs.rclone
   ];
 
-  systemd.user.services.rclone-gdrive = {
-    description = "Mount Google Drive (Dropbox folder) via Rclone";
+  systemd.user.services.rclone-bisync = {
+    description = "Bidirectional Sync for Obsidian (Google Drive)";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
 
     serviceConfig = {
-      Type = "notify";
-
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/Dropbox";
+      Type = "oneshot";
       Environment = "PATH=/run/wrappers/bin:$PATH";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount gdrive:Dropbox %h/Dropbox \\
+
+      # THE SYNC COMMAND
+      ExecStart = "${pkgs.rclone}/bin/rclone bisync gdrive:Dropbox %h/Dropbox \\
           --config=%h/.config/rclone/rclone.conf \\
-          --vfs-cache-mode full \\
-          --vfs-cache-max-age 48h \\
-          --vfs-read-chunk-size 32M \\
-          --dir-cache-time 1000h \\
-          --poll-interval 10s \\
-          --allow-non-empty \\
-          --no-modtime \\
-          --stats=0";
-
-      ExecStop = "/run/wrappers/bin/fusermount -u %h/Dropbox";
-
-      Restart = "on-failure";
-      RestartSec = "10s";
+          --verbose \\
+          --conflict-resolve newer \\
+          --remove-empty-dirs \\
+          --checkers=16 \\
+          --resync-mode newer";
     };
+  };
 
-    wantedBy = [ "default.target" ];
+  # 2. The Timer (Triggers the service periodically)
+  systemd.user.timers.rclone-bisync = {
+    description = "Run Obsidian Sync every 5 minutes";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "2m";
+      OnUnitActiveSec = "5m";
+      Unit = "rclone-bisync.service";
+    };
   };
 }
