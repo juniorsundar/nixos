@@ -22,6 +22,7 @@
           --verbose \\
           --conflict-resolve newer \\
           --remove-empty-dirs \\
+          --ignore-listing-checksum \\
           --checkers=16 \\
           --resync-mode newer";
     };
