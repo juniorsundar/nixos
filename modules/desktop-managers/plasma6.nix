@@ -13,6 +13,7 @@
     # For X-Server only and forwarding
     xhost
     kdePackages.kcalc
+    kdePackages.kirigami
   ];
 
   programs.kdeconnect.enable = true;
