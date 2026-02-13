@@ -13,6 +13,8 @@
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
 
+    wantedBy = [ "default.target" ];
+
     serviceConfig = {
       Type = "notify";
       Environment = "PATH=/run/wrappers/bin:$PATH";
