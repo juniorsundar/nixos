@@ -3,7 +3,12 @@
   imports = [ ../../common/workstation.nix ];
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
+    };
     hostName = "juniorsundar";
     # wireless.enable = true;
   };
