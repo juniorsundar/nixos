@@ -22,6 +22,11 @@
         origin = "flathub";
       }
     ];
+
+    services.ollama = {
+      enable = true;
+      package = pkgs.ollama-vulcan;
+    };
   };
 
   environment.systemPackages = with pkgs; [
