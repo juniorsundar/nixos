@@ -23,15 +23,15 @@
       }
     ];
 
-    services.ollama = {
+    ollama = {
       enable = true;
-      package = pkgs.ollama-vulcan;
+      package = pkgs.ollama-vulkan;
     };
   };
 
   environment.systemPackages = with pkgs; [
     microsoft-edge
-    devcontainer
+    # devcontainer
   ];
   programs.qgroundcontrol.enable = true;
 
