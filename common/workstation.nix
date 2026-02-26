@@ -71,7 +71,7 @@
       # App Suites
       libreoffice
       tree-sitter
-      zed-editor
+      vscode
     ];
   };
 }
