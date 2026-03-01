@@ -10,12 +10,12 @@
       upgrade = true;
     };
     casks = [
-      "raspberry-pi-imager"
       "discord"
       "spotify"
       "docker-desktop"
       "zed"
       "emacs-plus-app"
+      "ghostty"
     ];
     brews = [
       "gemini-cli"
