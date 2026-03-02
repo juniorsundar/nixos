@@ -69,7 +69,7 @@
       ntfs3g
       mosh
       # App Suites
-      libreoffice
+      libreoffice-fresh
       tree-sitter
       vscode
     ];
