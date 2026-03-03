@@ -16,6 +16,7 @@
       "zed"
       "emacs-plus-app"
       "ghostty"
+      "visual-studio-code"
     ];
     brews = [
       "gemini-cli"
