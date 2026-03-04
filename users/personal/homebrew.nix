@@ -15,7 +15,7 @@
       "docker-desktop"
       "zed"
       "emacs-plus-app"
-      "ghostty"
+      "kitty"
       "visual-studio-code"
     ];
     brews = [
