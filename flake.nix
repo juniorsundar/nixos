@@ -187,6 +187,23 @@
           ];
         };
 
+
+        juniorsundar-laptop = mkNixosSystem {
+          hostname = "juniorsundar-laptop";
+          users = {
+            juniorsundar = import ./users/personal/home.nix;
+          };
+          extraOverlays = [
+            emacs-overlay.overlays.default
+            emacs-mirror-overlay
+          ];
+          extraModules = [
+            ./modules/desktop-managers/plasma6.nix
+            ./modules/sound/pipewire.nix
+            ./modules/services/rclone-gdrive.nix
+          ];
+        };
+
         juniorsundar-office = mkNixosSystem {
           hostname = "juniorsundar-office";
           users = {
