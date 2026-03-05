@@ -14,6 +14,7 @@
     xhost
     kdePackages.kcalc
     kdePackages.kirigami
+    kdePackages.plasma-browser-integration
   ];
 
   programs.kdeconnect.enable = true;
