@@ -201,6 +201,7 @@
             ./modules/desktop-managers/plasma6.nix
             ./modules/sound/pipewire.nix
             ./modules/services/rclone-gdrive.nix
+            ./modules/hardware/fingerprint.nix
           ];
         };
 
