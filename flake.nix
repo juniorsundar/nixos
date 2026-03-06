@@ -219,7 +219,7 @@
             ./modules/sound/pipewire.nix
             ./modules/hardware/nvidia.nix
             ./modules/virtualisation/docker.nix
-            ./modules/virtualisation/libvirtd.nix
+            # ./modules/virtualisation/libvirtd.nix
             ./modules/services/rclone-gdrive.nix
           ];
         };
