@@ -202,6 +202,7 @@
             ./modules/sound/pipewire.nix
             ./modules/services/rclone-gdrive.nix
             ./modules/hardware/fingerprint.nix
+            ./modules/virtualisation/docker.nix
           ];
         };
 
