@@ -37,7 +37,6 @@
     };
 
     wezterm.url = "github:wezterm/wezterm?dir=nix";
-
   };
 
   nixConfig = {
@@ -68,6 +67,7 @@
       };
 
       emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
+      kilocode-overlay = import ./overlays/kilocode.nix;
 
       # Helper function to create a NixOS system
       mkNixosSystem =
