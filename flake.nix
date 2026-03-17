@@ -216,7 +216,7 @@
             emacs-mirror-overlay
           ];
           extraModules = [
-            ./modules/desktop-managers/plasma6.nix
+            ./modules/desktop-managers/gnome.nix
             ./modules/sound/pipewire.nix
             ./modules/hardware/nvidia.nix
             ./modules/virtualisation/docker.nix

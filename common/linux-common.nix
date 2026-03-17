@@ -69,7 +69,6 @@
   services = {
     printing.enable = true;
     tailscale.enable = true;
-    openssh.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
