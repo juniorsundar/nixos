@@ -15,6 +15,7 @@
     xhost
     ulauncher
 
+    gnomeExtensions.pop-shell
     gnome-tweaks
   ];
 
