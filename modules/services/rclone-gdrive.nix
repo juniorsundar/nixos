@@ -16,8 +16,6 @@
       Type = "oneshot";
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.config/rclone";
       ExecStart = pkgs.writeShellScript "rclone-sync-logic" ''
-        ${pkgs.libnotify}/bin/notify-send -i sync-synchronizing "Rclone GDrive" "Syncing started..."
-
         if ${pkgs.rclone}/bin/rclone bisync \
           "gdrive:Dropbox" "$HOME/Dropbox" \
           --compare size,modtime,checksum \
@@ -38,7 +36,7 @@
           --max-lock 2m \
           --check-access; then
 
-          ${pkgs.libnotify}/bin/notify-send -i security-high "Rclone GDrive" "Sync completed successfully."
+          exit 0
         else
           ${pkgs.libnotify}/bin/notify-send -u critical -i dialog-error "Rclone GDrive" "Sync FAILED. Check logs."
           exit 1
