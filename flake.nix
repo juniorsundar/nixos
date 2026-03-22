@@ -63,7 +63,7 @@
       # Fetch dotfiles WITH submodules
       dotfiles = fetchGit {
         url = "https://github.com/juniorsundar/dotfiles";
-        rev = "424ef9c29d23888c2c428ab5407c0092d7dc7b25";
+        rev = "d1740771a180d078b29bab376bd4db0563ff1c06";
       };
 
       emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
