@@ -13,7 +13,6 @@
     playerctl
     pavucontrol
     xhost
-    ulauncher
 
     gnomeExtensions.pop-shell
     gnome-tweaks
