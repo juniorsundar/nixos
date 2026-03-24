@@ -1,25 +1,17 @@
 { config, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
-
+  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
   hardware = {
     nvidia = {
       open = false;
-      # prime = {
-      #   offload = {
-      #     enable = true;
-      #     enableOffloadCmd = true;
-      #   };
-      #   amdgpuBusId = "PCI:6:0:0";
-      #   nvidiaBusId = "PCI:1:0:0";
-      # };
       modesetting.enable = true;
       powerManagement = {
-        enable = true;
+        enable = false;
         finegrained = false;
       };
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
     };
 
     graphics = {
