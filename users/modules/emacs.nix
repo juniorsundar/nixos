@@ -29,6 +29,7 @@
           tree-sitter-typescript
           tree-sitter-yaml
           tree-sitter-nix
+          tree-sitter-just
         ]
       ))
       epkgs.vterm

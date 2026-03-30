@@ -20,11 +20,19 @@ in
   config = {
     boot.kernel.sysctl = {
       "net.ipv4.ip_unprivileged_port_start" = 80;
+      "net.ipv4.ip_forward" = 1;
     };
 
     virtualisation.docker = {
       enable = true;
       rootless.enable = false;
+
+      daemon.settings = {
+        "dns" = [
+          "8.8.8.8"
+          "1.1.1.1"
+        ];
+      };
 
       extraPackages = [
         pkgs.docker-buildx
