@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   nix = {
     settings.experimental-features = [
@@ -43,7 +43,7 @@
     yazi
     tmux
     # gum
-    neovim
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     starship
     # wezterm
     kitty
