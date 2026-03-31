@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay?ref=9001416dc5d0ca24c8e4b5a44bfe7cd6fbeb1dd1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
       flake = false;
@@ -67,7 +72,6 @@
       };
 
       emacs-mirror-overlay = import ./overlays/emacs-mirror.nix;
-      kilocode-overlay = import ./overlays/kilocode.nix;
 
       # Helper function to create a NixOS system
       mkNixosSystem =
@@ -186,7 +190,6 @@
             ./modules/services/rclone-gdrive.nix
           ];
         };
-
 
         juniorsundar-laptop = mkNixosSystem {
           hostname = "juniorsundar-laptop";
