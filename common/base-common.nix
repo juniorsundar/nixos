@@ -42,12 +42,11 @@
     # zellij
     yazi
     tmux
-    # gum
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     starship
     # wezterm
-    kitty
-    # ghostty
+    # kitty
+    ghostty
     nixd
     nixfmt
     nh
