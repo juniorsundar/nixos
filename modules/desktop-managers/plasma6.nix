@@ -15,6 +15,7 @@
     kdePackages.kcalc
     kdePackages.kirigami
     kdePackages.plasma-browser-integration
+    kdePackages.partitionmanager
   ];
 
   programs.kdeconnect.enable = true;
