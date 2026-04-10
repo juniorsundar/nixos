@@ -42,7 +42,7 @@
     # zellij
     yazi
     tmux
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    neovim
     starship
     # wezterm
     # kitty
