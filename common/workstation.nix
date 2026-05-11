@@ -65,6 +65,9 @@
       nodejs
       uv
       direnv
+      jdk
+      graphviz
+      husky
       # fileSystems
       ntfs3g
       mosh
