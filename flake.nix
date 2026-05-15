@@ -226,6 +226,7 @@
             ./modules/virtualisation/docker.nix
             ./modules/virtualisation/libvirtd.nix
             ./modules/services/rclone-gdrive.nix
+            ./modules/functionality/flash-nvidia.nix
           ];
         };
       };

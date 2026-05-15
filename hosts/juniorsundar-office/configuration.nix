@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     microsoft-edge
+    picocom
     # devcontainer
   ];
   programs.qgroundcontrol.enable = true;

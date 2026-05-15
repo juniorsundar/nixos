@@ -51,7 +51,6 @@
     nixfmt
     nh
     gh
-    opencode
   ];
 
   programs = {
