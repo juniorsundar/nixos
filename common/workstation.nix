@@ -60,7 +60,6 @@
       cmake
       gcc
       psmisc
-      python3
       glibc
       nodejs
       uv
