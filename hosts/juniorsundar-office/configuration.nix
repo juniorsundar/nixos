@@ -27,6 +27,8 @@
   environment.systemPackages = with pkgs; [
     microsoft-edge
     picocom
+    slack
+    teams-for-linux
     # devcontainer
   ];
   programs.qgroundcontrol.enable = true;
