@@ -68,6 +68,7 @@
       graphviz
       husky
       distrobox
+      jq
       # fileSystems
       ntfs3g
       mosh
