@@ -16,6 +16,7 @@
     kdePackages.kirigami
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
+    kdePackages.kio-fuse
   ];
 
   programs.kdeconnect.enable = true;
