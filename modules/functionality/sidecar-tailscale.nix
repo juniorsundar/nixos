@@ -40,15 +40,21 @@ in
 
     extraSetFlags = mkOption {
       type = types.listOf types.str;
-      default = [ "--netfilter-mode=off" ];
+      default = [
+        "--netfilter-mode=off"
+        "--accept-dns=false"
+      ];
       example = [
         "--netfilter-mode=off"
+        "--accept-dns=false"
         "--advertise-exit-node"
       ];
       description = ''
         Extra flags to pass to `tailscale set` on the sidecar.
         Defaults to `--netfilter-mode=off` to prevent the sidecar from wiping
-        the primary instance's firewall rules.
+        the primary instance's firewall rules, and `--accept-dns=false` to
+        prevent the sidecar from overriding DNS and blocking other DNS
+        sources (e.g. a VPN) via resolvconf exclusivity.
       '';
     };
   };
