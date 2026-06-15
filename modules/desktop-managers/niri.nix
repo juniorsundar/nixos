@@ -22,6 +22,8 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
     xwayland-satellite
+    kdePackages.dolphin
+    kdePackages.qt6ct
 
     xhost
   ];
