@@ -13,6 +13,7 @@
   environment = {
     variables.EDITOR = "nvim";
     variables.MANPAGER = "nvim +Man!";
+    variables.TERMINAL = "kitty";
   };
 
   services = {
@@ -53,6 +54,7 @@
     eza
     zoxide
     lazygit
+    ripdrag
     # zellij
     yazi
     tmux
