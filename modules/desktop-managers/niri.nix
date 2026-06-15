@@ -1,23 +1,27 @@
-{ pkgs, ... }:
 {
-  programs.niri = {
-    enable = true;
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+  programs = {
+    niri.enable = true;
+    dms-shell.enable = true;
+    dsearch.enable = true;
   };
-  security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = { };
 
-  programs.waybar.enable = true;
+  services.displayManager.dms-greeter = {
+    enable = true;
+    compositor.name = "niri"; # Or "hyprland" or "sway"
+  };
+
+  # DMS pulls in gcr-ssh-agent which conflicts with programs.ssh.startAgent
+  programs.ssh.startAgent = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
-    playerctl
-    pavucontrol
-
-    waylock
-    mako
-    swayidle
-    rofi
+    xwayland-satellite
 
     xhost
   ];
