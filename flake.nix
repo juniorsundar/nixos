@@ -41,8 +41,6 @@
       flake = false;
     };
 
-    wezterm.url = "github:wezterm/wezterm?dir=nix";
-
     dms = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -230,7 +228,8 @@
             emacs-mirror-overlay
           ];
           extraModules = [
-            ./modules/desktop-managers/plasma6.nix
+            # ./modules/desktop-managers/plasma6.nix
+            ./modules/desktop-managers/niri.nix
             ./modules/sound/pipewire.nix
             ./modules/hardware/nvidia.nix
             ./modules/hardware/dual_graphics.nix

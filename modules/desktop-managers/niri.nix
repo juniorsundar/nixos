@@ -16,6 +16,8 @@
     compositor.name = "niri"; # Or "hyprland" or "sway"
   };
 
+  services.upower.enable = true;
+
   # DMS pulls in gcr-ssh-agent which conflicts with programs.ssh.startAgent
   programs.ssh.startAgent = lib.mkForce false;
 
@@ -25,5 +27,7 @@
     kdePackages.qt6ct
 
     xhost
+    # FOR WORK
+    gp-saml-gui
   ];
 }
