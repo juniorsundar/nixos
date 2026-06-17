@@ -228,8 +228,8 @@
             emacs-mirror-overlay
           ];
           extraModules = [
-            # ./modules/desktop-managers/plasma6.nix
-            ./modules/desktop-managers/niri.nix
+            ./modules/desktop-managers/plasma6.nix
+            # ./modules/desktop-managers/niri.nix
             ./modules/sound/pipewire.nix
             ./modules/hardware/nvidia.nix
             ./modules/hardware/dual_graphics.nix
