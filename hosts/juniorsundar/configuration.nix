@@ -22,6 +22,13 @@
 
   environment.systemPackages = with pkgs; [
     python3
+    wineWowPackages.stagingFull
+
     lutris
+    (lutris.override {
+      extraPkgs = pkgs: [
+        pkgs.wineWowPackages.stagingFull
+      ];
+    })
   ];
 }
