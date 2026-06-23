@@ -43,7 +43,7 @@
     luarocks
     zsh
     stow
-    btop
+    bottom
     ripgrep
     git
     jujutsu
