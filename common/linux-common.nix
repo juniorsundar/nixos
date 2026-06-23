@@ -76,6 +76,7 @@
     networkmanagerapplet
     google-chrome
     vlc
+    transmission_4-qt
     # calibre
   ];
 

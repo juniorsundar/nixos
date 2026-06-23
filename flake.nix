@@ -195,6 +195,7 @@
             ./modules/hardware/nvidia.nix
             ./modules/virtualisation/docker.nix
             ./modules/services/rclone-gdrive.nix
+            ./modules/services/omniroute.nix
             ./modules/functionality/sidecar-tailscale.nix
           ];
         };
