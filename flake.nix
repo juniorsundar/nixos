@@ -235,6 +235,7 @@
             ./modules/virtualisation/docker.nix
             ./modules/virtualisation/libvirtd.nix
             ./modules/services/rclone-gdrive.nix
+            ./modules/services/omniroute.nix
             ./modules/functionality/flash-nvidia.nix
             ./modules/functionality/sidecar-tailscale.nix
           ];
