@@ -44,6 +44,7 @@
     picocom
     slack
     teams-for-linux
+    claude-code
     # devcontainer
   ];
   programs.qgroundcontrol.enable = true;
