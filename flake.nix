@@ -191,12 +191,11 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            ./modules/sound/pipewire.nix
-            ./modules/hardware/nvidia.nix
-            ./modules/virtualisation/docker.nix
-            ./modules/services/rclone-gdrive.nix
-            ./modules/services/omniroute.nix
             ./modules/functionality/sidecar-tailscale.nix
+            ./modules/hardware/nvidia.nix
+            ./modules/services/omniroute.nix
+            ./modules/sound/pipewire.nix
+            ./modules/virtualisation/docker.nix
           ];
         };
 
@@ -211,9 +210,9 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            ./modules/sound/pipewire.nix
-            ./modules/services/rclone-gdrive.nix
             ./modules/hardware/fingerprint.nix
+            ./modules/services/rclone-gdrive.nix
+            ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
           ];
         };
@@ -229,16 +228,15 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            # ./modules/desktop-managers/niri.nix
-            ./modules/sound/pipewire.nix
-            ./modules/hardware/nvidia.nix
-            ./modules/hardware/dual_graphics.nix
-            ./modules/virtualisation/docker.nix
-            ./modules/virtualisation/libvirtd.nix
-            ./modules/services/rclone-gdrive.nix
-            ./modules/services/omniroute.nix
             ./modules/functionality/flash-nvidia.nix
             ./modules/functionality/sidecar-tailscale.nix
+            ./modules/hardware/dual_graphics.nix
+            ./modules/hardware/nvidia.nix
+            ./modules/services/omniroute.nix
+            ./modules/services/rclone-gdrive.nix
+            ./modules/sound/pipewire.nix
+            ./modules/virtualisation/docker.nix
+            ./modules/virtualisation/libvirtd.nix
           ];
         };
       };
