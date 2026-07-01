@@ -77,6 +77,7 @@
     google-chrome
     vlc
     transmission_4-qt
+    sshfs
     # calibre
   ];
 
