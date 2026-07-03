@@ -46,10 +46,6 @@
           origin = "flathub";
         }
         {
-          appId = "md.obsidian.Obsidian";
-          origin = "flathub";
-        }
-        {
           appId = "com.obsproject.Studio";
           origin = "flathub";
         }
@@ -78,6 +74,7 @@
     vlc
     transmission_4-qt
     sshfs
+    obsidian
     # calibre
   ];
 
