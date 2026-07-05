@@ -18,6 +18,7 @@
           tree-sitter-html
           tree-sitter-javascript
           tree-sitter-json
+          tree-sitter-just
           tree-sitter-lua
           tree-sitter-markdown
           tree-sitter-markdown-inline
@@ -28,11 +29,8 @@
           tree-sitter-tsx
           tree-sitter-typescript
           tree-sitter-yaml
-          tree-sitter-nix
-          tree-sitter-just
         ]
       ))
-      epkgs.vterm
     ];
   };
 }
