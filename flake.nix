@@ -211,7 +211,6 @@
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
             ./modules/hardware/fingerprint.nix
-            ./modules/services/rclone-gdrive.nix
             ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
           ];
@@ -233,7 +232,6 @@
             ./modules/hardware/dual_graphics.nix
             ./modules/hardware/nvidia.nix
             ./modules/services/omniroute.nix
-            ./modules/services/rclone-gdrive.nix
             ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
             ./modules/virtualisation/libvirtd.nix
