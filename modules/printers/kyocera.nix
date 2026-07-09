@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 let
+  cupsUsername = "junior.sundar";
+
   pythonWithReportlab = pkgs.python3.withPackages (pythonPackages: [
     pythonPackages.reportlab
     pythonPackages.setuptools
@@ -77,6 +79,17 @@ in
       pkgs.cups-filters
       pkgs.ghostscript
     ];
+  };
+
+  # Make CUPS submit jobs using the secure-print username.
+  # This is system-wide, so it is best for a single-user laptop.
+  environment.etc."cups/client.conf".text = ''
+    User ${cupsUsername}
+  '';
+
+  # Helps GUI apps launched from Plasma inherit the same CUPS username.
+  environment.sessionVariables = {
+    CUPS_USER = cupsUsername;
   };
 
   # Compatibility for existing CUPS queues created from the original Debian PPDs.
