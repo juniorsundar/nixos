@@ -41,12 +41,20 @@ let
         $out/share/cups/model/kyocera \
         $out/share/kyocera9.4
 
-      # The deb contains both CS and TASKalfa 4053ci PPDs. Install the
-      # TASKalfa model explicitly, plus the CS alias in case CUPS exposes
-      # that naming variant during printer discovery.
+      # The deb contains both CS and TASKalfa 4053ci KPDL/PostScript PPDs.
+      # Install the TASKalfa model explicitly, plus the CS alias in case CUPS
+      # exposes that naming variant during printer discovery.
       cp usr/share/kyocera9.4/ppd9.4/Kyocera_TASKalfa_4053ci.ppd \
         $out/share/cups/model/kyocera/
       cp usr/share/kyocera9.4/ppd9.4/Kyocera_CS_4053ci.ppd \
+        $out/share/cups/model/kyocera/
+
+      # Also expose generic raster/PCL and PDF PPDs from the same driver bundle.
+      # These are useful fallback queues for image-heavy PDFs that trigger
+      # PostScript /limitcheck errors on the printer's KPDL interpreter.
+      cp usr/share/kyocera9.4/ppd9.4/Kyocera_Generic_Color_A3_PCL.ppd \
+        $out/share/cups/model/kyocera/
+      cp usr/share/kyocera9.4/ppd9.4/Kyocera_Generic_Color_A3_PDF.ppd \
         $out/share/cups/model/kyocera/
 
       cp usr/lib/cups/filter/kyofilter* $out/lib/cups/filter/
@@ -58,8 +66,11 @@ let
 
       # CUPS on NixOS builds a ServerBin symlink tree from driver packages;
       # absolute /usr/lib/cups/filter paths from the Debian PPDs will not exist.
-      substituteInPlace $out/share/cups/model/kyocera/*.ppd \
-        --replace-fail "/usr/lib/cups/filter/" ""
+      for ppd in $out/share/cups/model/kyocera/*.ppd; do
+        if grep -q "/usr/lib/cups/filter/" "$ppd"; then
+          substituteInPlace "$ppd" --replace-fail "/usr/lib/cups/filter/" ""
+        fi
+      done
 
       # Patch the Python pre-filter to run with Nix's Python and dependencies.
       substituteInPlace $out/lib/cups/filter/kyofilter_pre_H \
@@ -79,13 +90,13 @@ in
       pkgs.cups-filters
       pkgs.ghostscript
     ];
-  };
 
-  # Make CUPS submit jobs using the secure-print username.
-  # This is system-wide, so it is best for a single-user laptop.
-  environment.etc."cups/client.conf".text = ''
-    User ${cupsUsername}
-  '';
+    # Make CUPS submit jobs using the secure-print username.
+    # This is system-wide, so it is best for a single-user laptop.
+    clientConf = ''
+      User ${cupsUsername}
+    '';
+  };
 
   # Helps GUI apps launched from Plasma inherit the same CUPS username.
   environment.sessionVariables = {
