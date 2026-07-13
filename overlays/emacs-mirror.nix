@@ -3,8 +3,8 @@ final: prev: {
     src = prev.fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      rev = "636f166cfc86aa90d63f592fd99f3fdd9ef95ebd";
-      hash = "sha256-3Lfb3HqdlXqSnwJfxe7npa4GGR9djldy8bKRpkQCdSA=";
+      rev = "0ee48ac4df205e0d915946b5db00e73a0cd21ae0";
+      hash = "sha256-Rzlnn+NKQ+jICXLNop27RnVInq79myn4hueJieDO2Ck=";
     };
   });
 }
