@@ -76,6 +76,7 @@
       libreoffice-fresh
       tree-sitter
       vscode
+      markdown-oxide
     ];
   };
 }
