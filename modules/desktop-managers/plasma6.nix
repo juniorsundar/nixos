@@ -17,6 +17,7 @@
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
     kdePackages.kio-fuse
+    kdePackages.kdenlive
   ];
 
   programs.kdeconnect.enable = true;

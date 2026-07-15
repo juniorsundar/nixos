@@ -83,6 +83,10 @@
     thunderbird.enable = true;
     nix-ld.enable = true;
     ssh.startAgent = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
   system.stateVersion = "25.11"; # Did you read the comment?
 }
