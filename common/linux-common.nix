@@ -75,6 +75,7 @@
     transmission_4-qt
     sshfs
     obsidian
+    cachix
     # calibre
   ];
 
