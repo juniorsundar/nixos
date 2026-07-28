@@ -75,7 +75,7 @@
       # App Suites
       libreoffice-fresh
       tree-sitter
-      vscode
+      vscodium
       markdown-oxide
     ];
   };
