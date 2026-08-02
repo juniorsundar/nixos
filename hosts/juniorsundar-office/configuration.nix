@@ -7,6 +7,7 @@
       enable = true;
       plugins = with pkgs; [
         networkmanager-openconnect
+        networkmanager-openvpn
       ];
 
       # Keep Tailscale MagicDNS available while letting resolvconf merge in
