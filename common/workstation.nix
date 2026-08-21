@@ -46,6 +46,17 @@
     };
   };
 
+  # Programs
+  programs.direnv = {
+    enable = true;
+    # Caches each project's evaluated devShell, so re-entering a directory does
+    # not re-realise the shell derivation. Without this, direnv's own `use
+    # flake` runs `nix print-dev-env` on every load, which rebuilds whenever the
+    # derivation changed — for flakes that embed their source, that is every
+    # edit.
+    nix-direnv.enable = true;
+  };
+
   # Environment
   environment = {
     shells = with pkgs; [
@@ -63,7 +74,6 @@
       glibc
       nodejs
       uv
-      direnv
       jdk
       graphviz
       husky
