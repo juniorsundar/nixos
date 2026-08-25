@@ -236,6 +236,7 @@
             ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
             ./modules/virtualisation/libvirtd.nix
+            ./modules/work/remote-builder.nix
           ];
         };
       };
