@@ -4,9 +4,10 @@
     emacs-lsp-booster
   ];
 
+  services.emacs.enable = true;
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-git;
+    package = pkgs.emacs-git-pgtk;
     extraPackages = epkgs: [
       (epkgs.treesit-grammars.with-grammars (
         grammars: with grammars; [

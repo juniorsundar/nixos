@@ -79,11 +79,12 @@
       husky
       distrobox
       jq
+      pandoc
       # fileSystems
       ntfs3g
       mosh
       # App Suites
-      libreoffice-fresh
+      libreoffice-stable
       tree-sitter
       vscodium
       markdown-oxide

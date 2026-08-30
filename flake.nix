@@ -7,7 +7,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak/"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,11 +30,6 @@
       url = "github:nix-community/emacs-overlay?ref=8dc89caf030bdbae6019140e1d2451227f8e80e7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # neovim-nightly-overlay = {
-    #   url = "github:nix-community/neovim-nightly-overlay?ref=21b2795e6aeb4a0110bdc7bd81bad59c022c9986";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
