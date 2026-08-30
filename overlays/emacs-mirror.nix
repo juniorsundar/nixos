@@ -3,17 +3,22 @@ let
   emacsSrc = prev.fetchFromGitHub {
     owner = "emacs-mirror";
     repo = "emacs";
-    rev = "a360712c9d272d950d8d8255ef74570f7e90b7d9";
-    hash = "sha256-lFT5Vt49G17t/fRm5yppO5p9ui10I9JNJVaGO1GPZFI=";
+    rev = "672379785683d434415cbf0fb81417fe219f0593";
+    hash = "sha256-748pFQvix6XbW4VxPKztGj6fNcony2ZxOBvmk3a7c6Y=";
   };
 in {
   emacs-git = prev.emacs-git.overrideAttrs (old: {
     src = emacsSrc;
-    # Drop upstream overlay patches already merged in our pinned source.
-    patches = [];
+    # Keep all patches except Tramp ones that are already merged in our pinned source.
+    patches = builtins.filter
+      (p: !(builtins.match ".*tramp.*" (p.name or (baseNameOf (toString p))) != null))
+      (old.patches or []);
   });
   emacs-git-pgtk = prev.emacs-git-pgtk.overrideAttrs (old: {
     src = emacsSrc;
-    patches = [];
+    # Keep all patches except Tramp ones that are already merged in our pinned source.
+    patches = builtins.filter
+      (p: !(builtins.match ".*tramp.*" (p.name or (baseNameOf (toString p))) != null))
+      (old.patches or []);
   });
 }
