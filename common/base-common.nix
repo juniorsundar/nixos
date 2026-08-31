@@ -60,7 +60,6 @@
     tmux
     neovim
     starship
-    # wezterm
     kitty
     # ghostty
     nixd

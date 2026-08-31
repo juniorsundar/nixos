@@ -44,6 +44,8 @@
       url = "github:AvengeMedia/danksearch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wezterm.url = "github:wezterm/wezterm?dir=nix";
   };
 
   nixConfig = {
@@ -186,6 +188,7 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
+            ./modules/applications/wezterm.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/nvidia.nix
             ./modules/services/omniroute.nix
@@ -205,6 +208,7 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
+            ./modules/applications/wezterm.nix
             ./modules/hardware/fingerprint.nix
             ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
@@ -222,6 +226,7 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
+            ./modules/applications/wezterm.nix
             ./modules/functionality/flash-nvidia.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
