@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
       flake = false;
@@ -66,6 +71,7 @@
       nix-homebrew,
       home-manager,
       emacs-overlay,
+      neovim-overlay,
       ...
     }@inputs:
     let
@@ -185,6 +191,7 @@
           extraOverlays = [
             emacs-overlay.overlays.default
             emacs-mirror-overlay
+            neovim-overlay.overlays.default
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
@@ -223,6 +230,7 @@
           extraOverlays = [
             emacs-overlay.overlays.default
             emacs-mirror-overlay
+            neovim-overlay.overlays.default
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
