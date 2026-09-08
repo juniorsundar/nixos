@@ -32,7 +32,7 @@
     };
 
     neovim-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      url = "github:nix-community/neovim-nightly-overlay?ref=924e2b8734b67d46d24c191303c0be69436ec862";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -195,7 +195,6 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            ./modules/applications/wezterm.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/nvidia.nix
             ./modules/services/omniroute.nix
@@ -215,7 +214,6 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            ./modules/applications/wezterm.nix
             ./modules/hardware/fingerprint.nix
             ./modules/sound/pipewire.nix
             ./modules/virtualisation/docker.nix
@@ -234,8 +232,6 @@
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix
-            ./modules/applications/wezterm.nix
-            ./modules/functionality/flash-nvidia.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
             ./modules/hardware/nvidia.nix
