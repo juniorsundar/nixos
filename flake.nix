@@ -36,6 +36,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty.url = "github:ghostty-org/ghostty";
+
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
       flake = false;
@@ -192,6 +194,7 @@
             emacs-overlay.overlays.default
             emacs-mirror-overlay
             neovim-overlay.overlays.default
+            inputs.ghostty.overlays.default
           ];
           extraModules = [
             ./modules/desktop-managers/plasma6.nix

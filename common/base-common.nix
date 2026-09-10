@@ -61,7 +61,7 @@
     neovim
     starship
     kitty
-    # ghostty
+    ghostty
     nixd
     nixfmt
     nh
