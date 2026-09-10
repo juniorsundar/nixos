@@ -4,7 +4,6 @@
     emacs-lsp-booster
   ];
 
-  services.emacs.enable = true;
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-git-pgtk;
