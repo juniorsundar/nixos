@@ -36,7 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty?ref=44f2a44df7e8c4a0c6df3f7d872ef3d7ead88e51";
 
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
