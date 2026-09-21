@@ -151,12 +151,14 @@ in
         Type = "oneshot";
         RemainAfterExit = true;
       };
-
       script = ''
-        # If the primary tailscaled hasn't created ts-input (it may use a
-        # different firewall backend, or the chain was flushed during
-        # nixos-rebuild without tailscaled being restarted), skip gracefully.
         iptables -L ts-input >/dev/null 2>&1 || exit 0
+
+        # Allow Headscale traffic arriving through the main tailscale0 interface.
+        iptables -C ts-input -i tailscale0 -s 100.64.0.0/10 -j ACCEPT 2>/dev/null \
+          || iptables -I ts-input 1 -i tailscale0 -s 100.64.0.0/10 -j ACCEPT
+
+        # Allow the sidecar interface too.
         iptables -C ts-input -i ${escapeShellArg cfg.interfaceName} -j ACCEPT 2>/dev/null \
           || iptables -I ts-input 1 -i ${escapeShellArg cfg.interfaceName} -j ACCEPT
       '';
