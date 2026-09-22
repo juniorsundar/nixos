@@ -214,11 +214,13 @@
           extraOverlays = [
             emacs-overlay.overlays.default
             emacs-mirror-overlay
+            neovim-overlay.overlays.default
           ];
           extraModules = [
-            ./modules/desktop-managers/plasma6.nix
+            ./modules/desktop-managers/niri.nix
             ./modules/hardware/fingerprint.nix
             ./modules/sound/pipewire.nix
+            ./modules/services/omniroute.nix
             ./modules/virtualisation/docker.nix
           ];
         };
