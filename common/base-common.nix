@@ -17,19 +17,27 @@
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        X11Forwarding = true;
+      };
+    };
 
     searx = {
       enable = true;
       package = pkgs.searxng;
       redisCreateLocally = true;
       settings = {
-        search.formats = [ "html" "json" ];
+        search.formats = [
+          "html"
+          "json"
+        ];
         server = {
-        bind_address = "127.0.0.1";
-        port = 5340;
-        secret_key = "some-random-secret";
-      };
+          bind_address = "127.0.0.1";
+          port = 5340;
+          secret_key = "some-random-secret";
+        };
       };
     };
   };

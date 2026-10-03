@@ -83,7 +83,10 @@
     # firefox.enable = true;
     thunderbird.enable = true;
     nix-ld.enable = true;
-    ssh.startAgent = true;
+    ssh = { 
+        startAgent = true;
+        forwardX11 = true;
+    };
     appimage = {
       enable = true;
       binfmt = true;
