@@ -40,16 +40,7 @@
   services = {
     flatpak = {
       enable = true;
-      packages = [
-        {
-          appId = "com.stremio.Stremio";
-          origin = "flathub";
-        }
-        {
-          appId = "com.obsproject.Studio";
-          origin = "flathub";
-        }
-      ];
+      packages = [ ];
       update.auto = {
         enable = true;
         onCalendar = "weekly";
@@ -76,6 +67,8 @@
     sshfs
     obsidian
     cachix
+    obs-studio
+    stremio-linux-shell
     # calibre
   ];
 
@@ -83,9 +76,9 @@
     # firefox.enable = true;
     thunderbird.enable = true;
     nix-ld.enable = true;
-    ssh = { 
-        startAgent = true;
-        forwardX11 = true;
+    ssh = {
+      startAgent = true;
+      forwardX11 = true;
     };
     appimage = {
       enable = true;
