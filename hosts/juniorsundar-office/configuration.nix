@@ -19,7 +19,10 @@
     };
     hostName = "juniorsundar-office";
     # wireless.enable = true;
-    firewall.trustedInterfaces = [ "wlp0s20f3" ];
+    firewall.trustedInterfaces = [
+      "wlp0s20f3"
+      "enp37s0u2u1u2"
+    ];
     # firewall.allowedTCPPorts = [ 8080 ];
   };
 
@@ -29,9 +32,6 @@
   services.tailscale.extraSetFlags = [ "--accept-dns=false" ];
 
   services = {
-    # OmniRoute is installed externally under /opt/omniroute and managed by
-    # modules/services/omniroute.nix. Keep the external install version in sync
-    # with the note in that module.
     flatpak.packages = [
       {
         appId = "com.prusa3d.PrusaSlicer";
