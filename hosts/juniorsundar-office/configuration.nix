@@ -48,6 +48,17 @@
     claude-code
     # devcontainer
   ];
-  programs.qgroundcontrol.enable = true;
+  programs.qgroundcontrol = {
+    enable = true;
+    # ponytail: GCC 16 + upstream -Werror breaks 4.4.5; drop once nixpkgs fixes it.
+    package = pkgs.qgroundcontrol.overrideAttrs (old: {
+      env = (old.env or { }) // {
+        NIX_CFLAGS_COMPILE = toString [
+          (old.env.NIX_CFLAGS_COMPILE or "")
+          "-Wno-error=unused-but-set-variable"
+        ];
+      };
+    });
+  };
 
 }

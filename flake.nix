@@ -236,6 +236,7 @@
             neovim-overlay.overlays.default
           ];
           extraModules = [
+            ./modules/applications/chatgpt-codex.nix
             ./modules/desktop-managers/plasma6.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
