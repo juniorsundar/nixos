@@ -40,6 +40,13 @@
     ];
   };
 
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
+  users.users.juniorsundar.extraGroups = [ "tss" ];
+
   environment.systemPackages = with pkgs; [
     microsoft-edge
     picocom
@@ -47,10 +54,25 @@
     teams-for-linux
     claude-code
     # devcontainer
+
+    usbutils
+    cryptsetup
+    e2fsprogs
+    util-linux
+
+    tpm2-tools
+    opensc
+    softhsm
   ];
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-cli;
+  };
+
   programs.qgroundcontrol = {
     enable = true;
-    # ponytail: GCC 16 + upstream -Werror breaks 4.4.5; drop once nixpkgs fixes it.
+    # GCC 16 + upstream -Werror breaks 4.4.5; drop once nixpkgs fixes it.
     package = pkgs.qgroundcontrol.overrideAttrs (old: {
       env = (old.env or { }) // {
         NIX_CFLAGS_COMPILE = toString [

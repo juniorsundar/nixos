@@ -1,6 +1,23 @@
 { pkgs, ... }:
 
 let
+  # The app copies resources/plugins into ~/.codex and then edits the copy, but
+  # fs.cp keeps the store's read-only modes, so it fails with EACCES and never
+  # installs the browser-extension native messaging host. Keep a writable copy
+  # of the plugins in $XDG_DATA_HOME and point the app at it.
+  syncPlugins = pkgs.writeShellScript "chatgpt-codex-sync-plugins" ''
+    export PATH=${pkgs.coreutils}/bin
+    src=$1
+    dst="''${XDG_DATA_HOME:-$HOME/.local/share}/chatgpt-codex/resources"
+    [ "$(cat "$dst/.src" 2>/dev/null)" = "$src" ] && exit 0
+    chmod -R u+w "$dst" 2>/dev/null
+    rm -rf "$dst"
+    mkdir -p "$dst"
+    cp -r "$src" "$dst/"
+    chmod -R u+w "$dst"
+    echo "$src" > "$dst/.src"
+  '';
+
   # Upstream only publishes a floating "latest" URL. When it moves on, the build
   # fails with a hash mismatch: paste the new hash and bump `version`
   # (see usr/lib/chatgpt/resources/linux-package-metadata.json in the .deb).
@@ -82,6 +99,8 @@ let
     # Wrap after autoPatchelf so dlopen()ed libs (GL, Vulkan, udev) resolve.
     postFixup = ''
       makeWrapper $out/lib/chatgpt/ChatGPT $out/bin/chatgpt \
+        --run "${syncPlugins} $out/lib/chatgpt/resources/plugins" \
+        --run 'export CODEX_ELECTRON_BUNDLED_PLUGINS_RESOURCES_PATH="''${XDG_DATA_HOME:-$HOME/.local/share}/chatgpt-codex/resources"' \
         --prefix LD_LIBRARY_PATH : ${
           pkgs.lib.makeLibraryPath [
             pkgs.libglvnd
