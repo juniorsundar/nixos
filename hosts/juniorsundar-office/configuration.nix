@@ -22,6 +22,7 @@
     firewall.trustedInterfaces = [
       "wlp0s20f3"
       "enp37s0u2u1u2"
+      "enp86s0u2c2"
     ];
     # firewall.allowedTCPPorts = [ 8080 ];
   };
@@ -32,6 +33,14 @@
   services.tailscale.extraSetFlags = [ "--accept-dns=false" ];
 
   services = {
+    pipewire.wireplumber = {
+      enable = true;
+      extraConfig."10-bluez"."monitor.bluez.properties" = {
+        "override.bluez5.codecs" = [ "sbc" ];
+        "bluez5.enable-sbc-xq" = false;
+      };
+    };
+
     flatpak.packages = [
       {
         appId = "com.prusa3d.PrusaSlicer";

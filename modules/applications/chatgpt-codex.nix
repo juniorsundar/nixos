@@ -27,7 +27,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb";
-      hash = "sha256-uQqA+TU7wSpaW4RpUCqOV5SjxUo3HIiA4JTVAN5pW7g=";
+      hash = "sha256-zlmmG5Te9JzJIdaU75Uh7BdOuLZf2wwoXjuo5FIxoh8=";
     };
 
     nativeBuildInputs = with pkgs; [
