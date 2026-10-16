@@ -32,11 +32,11 @@
     };
 
     neovim-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay?ref=924e2b8734b67d46d24c191303c0be69436ec862";
+      url = "github:nix-community/neovim-nightly-overlay?ref=ec30eb6e2032509b15c535c122f31da2021f3481";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty.url = "github:ghostty-org/ghostty?ref=44f2a44df7e8c4a0c6df3f7d872ef3d7ead88e51";
+    ghostty.url = "github:ghostty-org/ghostty?ref=b3dc3d794513c11633e7c3347935693957744e83";
 
     homebrew-emacs-plus = {
       url = "github:d12frosted/homebrew-emacs-plus";
