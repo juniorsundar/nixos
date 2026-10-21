@@ -18,6 +18,7 @@
     kdePackages.partitionmanager
     kdePackages.kio-fuse
     kdePackages.kdenlive
+    kdePackages.krdc
   ];
 
   programs.kdeconnect.enable = true;
