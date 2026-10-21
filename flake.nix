@@ -263,5 +263,25 @@
           ./users/personal/homebrew.nix
         ];
       };
+
+      # Standalone home-manager for non-NixOS hosts (Ubuntu workhorse).
+      homeConfigurations."juniorsundar-workhorse" =
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [
+              emacs-overlay.overlays.default
+              emacs-mirror-overlay
+            ];
+            config = {
+              allowUnfree = true;
+              nvidia.acceptLicense = true;
+            };
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [ ./users/personal/workhorse-home.nix ];
+        };
     };
 }

@@ -60,6 +60,17 @@ Under `users/` I place my home-manager specific configs. I am not a big fan of h
 
 For any additional modules that may require extensive reconfiguration of the config (such as desktop-managers, specific hardware drivers, etc.) the content will be placed inside `modules/` folder. With `mkForce` to force certain config values to satisfy the module's configuration.
 
+For machines that are not running NixOS, the same flake exposes a standalone
+home-manager configuration under `homeConfigurations`. It reuses
+`common/cli-packages.nix` and the Emacs module but links no dotfiles (those
+stay stowed from `~/dotfiles`), and the system itself is left to the host
+distro:
+
+```sh
+nix build '.#homeConfigurations."juniorsundar-workhorse".activationPackage'
+./result/activate # installs the home-manager CLI for later switches
+```
+
 All of these come together in the root `flake.nix`:
 
 ```nix
