@@ -32,4 +32,5 @@ with pkgs;
   nixfmt
   nh
   gh
+  claude-code
 ]

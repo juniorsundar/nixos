@@ -22,5 +22,10 @@
 
   home.packages = import ../../common/cli-packages.nix pkgs;
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.home-manager.enable = true;
 }

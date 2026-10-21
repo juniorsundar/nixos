@@ -61,7 +61,6 @@
     picocom
     slack
     teams-for-linux
-    claude-code
     # devcontainer
 
     usbutils
