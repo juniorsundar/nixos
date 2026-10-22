@@ -18,7 +18,11 @@
     kdePackages.partitionmanager
     kdePackages.kio-fuse
     kdePackages.kdenlive
-    kdePackages.krdc
+    (kdePackages.krdc.override {
+      freerdp = pkgs.freerdp.override {
+        openh264 = null;
+      };
+    })
   ];
 
   programs.kdeconnect.enable = true;
