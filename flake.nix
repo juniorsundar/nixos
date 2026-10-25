@@ -53,6 +53,7 @@
     };
 
     wezterm.url = "github:wezterm/wezterm?dir=nix";
+    forgejo-cli.url = "git+https://codeberg.org/forgejo-contrib/forgejo-cli";
   };
 
   nixConfig = {

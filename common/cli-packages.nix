@@ -33,4 +33,5 @@ with pkgs;
   nh
   gh
   claude-code
+  forgejo-cli
 ]
