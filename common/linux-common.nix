@@ -40,7 +40,12 @@
   services = {
     flatpak = {
       enable = true;
-      packages = [ ];
+      packages = [
+        {
+          appId = "md.obsidian.Obsidian";
+          origin = "flathub";
+        }
+      ];
       update.auto = {
         enable = true;
         onCalendar = "weekly";
@@ -65,7 +70,6 @@
     vlc
     transmission_4-qt
     sshfs
-    obsidian
     cachix
     obs-studio
     stremio-linux-shell
