@@ -238,7 +238,8 @@
           ];
           extraModules = [
             ./modules/applications/chatgpt-codex.nix
-            ./modules/desktop-managers/plasma6.nix
+            # ./modules/desktop-managers/plasma6.nix
+            ./modules/desktop-managers/gnome.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
             ./modules/hardware/nvidia.nix

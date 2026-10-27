@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    xclip
     playerctl
     pavucontrol
     xhost
