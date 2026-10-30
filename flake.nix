@@ -198,8 +198,9 @@
             inputs.ghostty.overlays.default
           ];
           extraModules = [
-            ./modules/desktop-managers/plasma6.nix
-            ./modules/functionality/sidecar-tailscale.nix
+            ./modules/desktop-managers/gnome.nix
+            # ./modules/desktop-managers/plasma6.nix
+            # ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/nvidia.nix
             ./modules/services/omniroute.nix
             ./modules/sound/pipewire.nix
