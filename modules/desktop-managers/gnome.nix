@@ -16,6 +16,7 @@
     xhost
 
     gnomeExtensions.pop-shell
+    gnomeExtensions.dash-to-dock
     gnome-tweaks
   ];
 
