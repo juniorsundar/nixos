@@ -244,6 +244,7 @@
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
             ./modules/hardware/nvidia.nix
+            ./modules/hardware/nxp-mcu-link.nix
             ./modules/printers/kyocera.nix
             ./modules/services/omniroute.nix
             ./modules/sound/pipewire.nix
