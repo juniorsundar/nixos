@@ -52,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pi = {
+      url = "github:earendil-works/pi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wezterm.url = "github:wezterm/wezterm?dir=nix";
     forgejo-cli.url = "git+https://codeberg.org/forgejo-contrib/forgejo-cli";
   };
@@ -239,6 +244,8 @@
           ];
           extraModules = [
             ./modules/applications/chatgpt-codex.nix
+            ./modules/applications/pi.nix
+            ./modules/applications/pi-web.nix
             # ./modules/desktop-managers/plasma6.nix
             ./modules/desktop-managers/gnome.nix
             ./modules/functionality/sidecar-tailscale.nix
