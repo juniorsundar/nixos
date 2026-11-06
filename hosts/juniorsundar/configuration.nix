@@ -24,11 +24,11 @@
     python3
     wineWow64Packages.stagingFull
 
-    lutris
-    (lutris.override {
-      extraPkgs = pkgs: [
-        pkgs.wineWow64Packages.stagingFull
-      ];
-    })
+    # lutris
+    # (lutris.override {
+    #   extraPkgs = pkgs: [
+    #     pkgs.wineWow64Packages.stagingFull
+    #   ];
+    # })
   ];
 }

@@ -28,18 +28,13 @@ in
       description = "Whether to enable OmniRoute - Unified AI router with 160+ providers.";
     };
 
-    # Install OmniRoute externally with the known-good version:
-    #   sudo mkdir -p /opt/omniroute
-    #   sudo chown -R omniroute:omniroute /opt/omniroute
-    #   sudo -u omniroute ${pkgs.nodejs}/bin/npm install -g omniroute@3.8.33 --prefix /opt/omniroute
-    #
     # Newer OmniRoute versions may regress the dashboard/home UI. Upgrade
-    # deliberately and verify login + /home after each change.
-    binaryPath = mkOption {
-      type = types.str;
-      default = "/opt/omniroute/bin/omniroute";
-      description = "Path to an externally installed OmniRoute executable.";
-      example = "/opt/omniroute/bin/omniroute";
+    # deliberately (see ./omniroute/package.nix) and verify login + /home.
+    package = mkOption {
+      type = types.package;
+      default = pkgs.callPackage ./omniroute/package.nix { };
+      defaultText = literalExpression "pkgs.callPackage ./omniroute/package.nix { }";
+      description = "OmniRoute package. It is read-only; all state lives in dataDir.";
     };
 
     port = mkOption {
@@ -99,7 +94,7 @@ in
     systemd.services.omniroute = {
       description = "OmniRoute - Unified AI router";
       path = with pkgs; [
-        nodejs
+        nodejs_24 # the CLI spawns `node` from PATH; match the package's node
         bash
         coreutils
       ];
@@ -109,10 +104,6 @@ in
       ];
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
-
-      unitConfig = {
-        ConditionPathExists = cfg.binaryPath;
-      };
 
       environment =
         {
@@ -125,6 +116,8 @@ in
           TMPDIR = "${cfg.dataDir}/tmp";
           REQUIRE_API_KEY = if cfg.requireApiKey then "true" else "false";
           NODE_ENV = "production";
+          # Updates come from Nix, not `npm install -g`.
+          NO_UPDATE_NOTIFIER = "1";
         }
         // cfg.extraEnv;
 
@@ -153,7 +146,7 @@ in
 
         ExecStartPre = [ preStartScript ];
 
-        ExecStart = "${cfg.binaryPath} ${escapeShellArgs cfg.extraFlags}";
+        ExecStart = "${getExe cfg.package} --no-open ${escapeShellArgs cfg.extraFlags}";
       };
     };
   };
