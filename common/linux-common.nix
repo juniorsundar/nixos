@@ -79,7 +79,17 @@
   programs = {
     # firefox.enable = true;
     thunderbird.enable = true;
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      # GUI libs for prebuilt binaries (e.g. ~/.local/bin/herdr-app)
+      libraries = with pkgs; [
+        libxcb
+        libxkbcommon
+        wayland
+        libGL
+        vulkan-loader
+      ];
+    };
     ssh = {
       startAgent = true;
       forwardX11 = true;
