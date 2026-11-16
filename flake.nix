@@ -246,8 +246,7 @@
             ./modules/applications/chatgpt-codex.nix
             ./modules/applications/pi.nix
             ./modules/applications/pi-web.nix
-            # ./modules/desktop-managers/plasma6.nix
-            ./modules/desktop-managers/gnome.nix
+            ./modules/desktop-managers/plasma6.nix
             ./modules/functionality/sidecar-tailscale.nix
             ./modules/hardware/dual_graphics.nix
             ./modules/hardware/nvidia.nix
