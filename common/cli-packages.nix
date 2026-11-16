@@ -34,4 +34,23 @@ with pkgs;
   gh
   claude-code
   forgejo-cli
+  clang
+  gnumake
+  cmake
+  gcc
+  psmisc
+  glibc
+  nodejs
+  uv
+  jdk
+  graphviz
+  husky
+  distrobox
+  jq
+  pandoc
+  mosh
+  libreoffice-stable
+  tree-sitter
+  vscodium
+
 ]

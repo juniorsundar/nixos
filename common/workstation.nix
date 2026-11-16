@@ -65,29 +65,8 @@
     ];
 
     systemPackages = with pkgs; [
-      # Important stuff
-      clang
-      gnumake
-      cmake
-      gcc
-      psmisc
-      glibc
-      nodejs
-      uv
-      jdk
-      graphviz
-      husky
-      distrobox
-      jq
-      pandoc
       # fileSystems
       ntfs3g
-      mosh
-      # App Suites
-      libreoffice-stable
-      tree-sitter
-      vscodium
-      markdown-oxide
     ];
   };
 }

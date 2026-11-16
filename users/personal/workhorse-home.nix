@@ -22,6 +22,14 @@
 
   home.packages = import ../../common/cli-packages.nix pkgs;
 
+  # HM owns ~/.zshrc (so direnv etc. can hook in); the real config stays in dotfiles.
+  programs.zsh = {
+    enable = true;
+    enableCompletion = false; # dotfiles .zshrc runs compinit itself
+    envExtra = ''[ -r "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"'';
+    initContent = ''[ -r "$HOME/dotfiles/zsh/.zshrc" ] && source "$HOME/dotfiles/zsh/.zshrc"'';
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
