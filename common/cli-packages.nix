@@ -37,7 +37,7 @@ with pkgs;
   clang
   gnumake
   cmake
-  gcc
+  (lib.hiPrio gcc) # gcc and clang wrappers both ship cc/cpp/ld; gcc wins, clang/clang++ still available
   psmisc
   glibc
   nodejs
