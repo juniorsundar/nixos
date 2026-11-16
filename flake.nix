@@ -291,7 +291,12 @@
           extraSpecialArgs = {
             inherit inputs;
           };
-          modules = [ ./users/personal/workhorse-home.nix ];
+          modules = [
+            ./users/personal/workhorse-home.nix
+
+            # Extra modules (home-manager modules only, not NixOS ones)
+            ./modules/applications/pi.nix
+          ];
         };
     };
 }

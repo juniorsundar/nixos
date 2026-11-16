@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, options, ... }:
 
 let
   # The app copies resources/plugins into ~/.codex and then edits the copy, but
@@ -122,5 +122,10 @@ let
   };
 in
 {
-  environment.systemPackages = [ chatgpt-codex ];
+  # Works as both a NixOS and a home-manager module.
+  config =
+    if options ? home then
+      { home.packages = [ chatgpt-codex ]; }
+    else
+      { environment.systemPackages = [ chatgpt-codex ]; };
 }
