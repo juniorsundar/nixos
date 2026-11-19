@@ -42,6 +42,7 @@ with pkgs;
   glibc
   nodejs
   uv
+  python3
   jdk
   graphviz
   husky

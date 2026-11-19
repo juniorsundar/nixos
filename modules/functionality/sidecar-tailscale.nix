@@ -68,7 +68,14 @@ in
         exec ${lib.getExe cfg.package} --socket=/run/tailscale-sidecar/tailscaled.sock "$@"
       '')
     ];
-    networking.firewall.trustedInterfaces = [ cfg.interfaceName ];
+    # Every tailscaled flushes the ts-* iptables chains at startup and on
+    # --cleanup, so with two instances neither may own netfilter state.
+    # Both run with netfilter off and the NixOS firewall trusts both tuns.
+    services.tailscale.extraSetFlags = [ "--netfilter-mode=off" ];
+    networking.firewall.trustedInterfaces = [
+      config.services.tailscale.interfaceName
+      cfg.interfaceName
+    ];
     networking.firewall.checkReversePath = false;
 
     # --- systemd service for the sidecar tailscaled ---
@@ -103,7 +110,6 @@ in
         Environment = [
           "PORT=${toString cfg.port}"
           "TS_STATE_DIR=${cfg.stateDir}"
-          "TS_FWMARK=52221" # Add this line to separate routing
         ];
 
         ExecStart = "${cfg.package}/bin/tailscaled --statedir=${cfg.stateDir} --socket=/run/tailscale-sidecar/tailscaled.sock --tun ${cfg.interfaceName} --port=${toString cfg.port} ${lib.concatStringsSep " " cfg.extraDaemonFlags}";
@@ -129,40 +135,6 @@ in
 
     # --- Don't let dhcpcd manage the sidecar TUN ---
     networking.dhcpcd.denyInterfaces = [ cfg.interfaceName ];
-    systemd.services.tailscaled-sidecar-firewall = {
-      description = "Allow Tailscale sidecar interface through Tailscale firewall chain";
-
-      after = [
-        "tailscaled.service"
-        "tailscaled-sidecar.service"
-      ];
-
-      requires = [
-        "tailscaled-sidecar.service"
-      ];
-
-      wantedBy = [ "multi-user.target" ];
-
-      path = [
-        pkgs.iptables
-      ];
-
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
-        iptables -L ts-input >/dev/null 2>&1 || exit 0
-
-        # Allow Headscale traffic arriving through the main tailscale0 interface.
-        iptables -C ts-input -i tailscale0 -s 100.64.0.0/10 -j ACCEPT 2>/dev/null \
-          || iptables -I ts-input 1 -i tailscale0 -s 100.64.0.0/10 -j ACCEPT
-
-        # Allow the sidecar interface too.
-        iptables -C ts-input -i ${escapeShellArg cfg.interfaceName} -j ACCEPT 2>/dev/null \
-          || iptables -I ts-input 1 -i ${escapeShellArg cfg.interfaceName} -j ACCEPT
-      '';
-    };
     # If systemd-networkd is used, mark the sidecar TUN as unmanaged
     systemd.network.networks."50-tailscale-sidecar" = mkIf config.networking.useNetworkd {
       matchConfig = {
