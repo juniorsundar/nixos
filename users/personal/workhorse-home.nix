@@ -22,6 +22,10 @@
 
   home.packages = import ../../common/cli-packages.nix pkgs;
 
+  # The nix CLI lives in the installer's default profile; Ubuntu's
+  # /etc/profile.d/nix.sh only adds it for bash login shells, not zsh.
+  home.sessionPath = [ "/nix/var/nix/profiles/default/bin" ];
+
   # HM owns ~/.zshrc (so direnv etc. can hook in); the real config stays in dotfiles.
   programs.zsh = {
     enable = true;
