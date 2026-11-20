@@ -21,6 +21,9 @@ let
   '';
 in
 {
+  # nixpkgs now ships its own services.omniroute; keep ours until we migrate.
+  disabledModules = [ "services/web-apps/omniroute.nix" ];
+
   options.services.omniroute = {
     enable = mkOption {
       type = types.bool;
