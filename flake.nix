@@ -224,10 +224,12 @@
             neovim-overlay.overlays.default
           ];
           extraModules = [
-            ./modules/desktop-managers/niri.nix
+            ./modules/desktop-managers/plasma6.nix
             ./modules/hardware/fingerprint.nix
             ./modules/sound/pipewire.nix
             ./modules/services/omniroute.nix
+            ./modules/applications/pi.nix
+            ./modules/applications/pi-web.nix
             ./modules/virtualisation/docker.nix
           ];
         };

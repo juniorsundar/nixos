@@ -16,15 +16,15 @@
 # and set npmDepsHash = lib.fakeHash to get the new one.
 buildNpmPackage rec {
   pname = "omniroute";
-  version = "3.8.53";
+  version = "3.8.54";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/omniroute/-/omniroute-${version}.tgz";
-    hash = "sha256-VH+l6E7OR975GoznhsSCK2A741tQxUWnHF+mWYNCAPA=";
+    hash = "sha256-GbkRBcC9zIKbEjtpPkSr91RoPWgBg8EmWpr2yYH5feU=";
   };
 
   nodejs = nodejs_24;
-  npmDepsHash = "sha256-juRdnzNBtavICvSIiTnSy01wBl8slnffSgbHAyWfvtU=";
+  npmDepsHash = "sha256-b4Hoebnf+i5Vd7Xf0ummlc+CH0mZR7le9PVIpdRIxWM=";
   npmFlags = [ "--legacy-peer-deps" ]; # matches upstream Dockerfile
 
   # Lockfile was generated against this stripped manifest; dev deps/workspaces are build-only.
@@ -49,7 +49,7 @@ buildNpmPackage rec {
 
   meta = {
     description = "Unified AI router with 160+ providers";
-    homepage = "https://github.com/diegosouzapw/OmniRoute";
+    homepage = "https://github.com/cheaper-inference/OmniRoute";
     license = lib.licenses.mit;
     mainProgram = "omniroute";
     platforms = lib.platforms.linux;
