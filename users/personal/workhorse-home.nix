@@ -1,7 +1,22 @@
 {
+  lib,
   pkgs,
   ...
 }:
+let
+  searxSettings = (pkgs.formats.yaml { }).generate "searxng-settings.yml" {
+    use_default_settings = true;
+    search.formats = [
+      "html"
+      "json"
+    ];
+    server = {
+      bind_address = "127.0.0.1";
+      port = 5340;
+      secret_key = "some-random-secret";
+    };
+  };
+in
 {
   imports = [ ../modules/emacs.nix ];
 
@@ -37,6 +52,20 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  systemd.user.services.searx = {
+    Unit = {
+      Description = "SearXNG meta search engine";
+      After = [ "network-online.target" ];
+    };
+    Service = {
+      Environment = [ "SEARXNG_SETTINGS_PATH=${searxSettings}" ];
+      ExecStart = lib.getExe pkgs.searxng;
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install.WantedBy = [ "default.target" ];
   };
 
   programs.home-manager.enable = true;
