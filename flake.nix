@@ -216,8 +216,6 @@
           ];
           extraModules = [
             ./modules/applications/pi.nix
-            ./modules/applications/paseo.nix
-            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/desktop-managers/plasma6.nix
             ./modules/hardware/nvidia.nix
@@ -243,8 +241,6 @@
             ./modules/sound/pipewire.nix
             ./modules/services/omniroute.nix
             ./modules/applications/pi.nix
-            ./modules/applications/paseo.nix
-            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/virtualisation/docker.nix
           ];
@@ -263,8 +259,6 @@
           extraModules = [
             ./modules/applications/chatgpt-codex.nix
             ./modules/applications/pi.nix
-            ./modules/applications/paseo.nix
-            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/desktop-managers/plasma6.nix
             ./modules/functionality/sidecar-tailscale.nix
@@ -316,8 +310,6 @@
 
             # Extra modules (home-manager modules only, not NixOS ones)
             ./modules/applications/pi.nix
-            ./modules/applications/paseo.nix
-            ./modules/applications/t3code.nix
           ];
         };
     };
