@@ -33,6 +33,8 @@ with pkgs;
   nh
   gh
   claude-code
+  codex
+  antigravity-cli
   forgejo-cli
   clang
   gnumake

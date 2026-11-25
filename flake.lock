@@ -541,6 +541,26 @@
         "type": "github"
       }
     },
+    "paseo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795627855,
+        "narHash": "sha256-BTbIqOXhQkxRYRfRdprlILigMyfKx1ytn/4dE2WUVLo=",
+        "owner": "getpaseo",
+        "repo": "paseo",
+        "rev": "3777cc754b75f937dae2f8c17a251f627568057d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "getpaseo",
+        "repo": "paseo",
+        "type": "github"
+      }
+    },
     "pi": {
       "inputs": {
         "nixpkgs": [
@@ -578,6 +598,7 @@
         "nix-flatpak": "nix-flatpak",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
+        "paseo": "paseo",
         "pi": "pi",
         "wezterm": "wezterm"
       }
