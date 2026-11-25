@@ -600,6 +600,7 @@
         "nixpkgs": "nixpkgs_3",
         "paseo": "paseo",
         "pi": "pi",
+        "t3code": "t3code",
         "wezterm": "wezterm"
       }
     },
@@ -652,6 +653,29 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "t3code": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-unstable": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795621110,
+        "narHash": "sha256-F1n7eZQOnYnBXA4zMCkSKdls4D4F7ToTBvuY8wo+LwM=",
+        "owner": "clementpoiret",
+        "repo": "t3code-flake",
+        "rev": "d9e37c0e2f150efebb3960fd82198bd4d280fa10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "clementpoiret",
+        "repo": "t3code-flake",
         "type": "github"
       }
     },

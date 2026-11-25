@@ -62,6 +62,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    t3code = {
+      url = "github:clementpoiret/t3code-flake";
+      # Its runtime tools (codex, git, gh, ...) then match the ones installed system-wide.
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+    };
+
     wezterm.url = "github:wezterm/wezterm?dir=nix";
     forgejo-cli.url = "git+https://codeberg.org/forgejo-contrib/forgejo-cli";
   };
@@ -210,6 +217,7 @@
           extraModules = [
             ./modules/applications/pi.nix
             ./modules/applications/paseo.nix
+            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/desktop-managers/plasma6.nix
             ./modules/hardware/nvidia.nix
@@ -236,6 +244,7 @@
             ./modules/services/omniroute.nix
             ./modules/applications/pi.nix
             ./modules/applications/paseo.nix
+            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/virtualisation/docker.nix
           ];
@@ -255,6 +264,7 @@
             ./modules/applications/chatgpt-codex.nix
             ./modules/applications/pi.nix
             ./modules/applications/paseo.nix
+            ./modules/applications/t3code.nix
             ./modules/applications/pi-web.nix
             ./modules/desktop-managers/plasma6.nix
             ./modules/functionality/sidecar-tailscale.nix
@@ -307,6 +317,7 @@
             # Extra modules (home-manager modules only, not NixOS ones)
             ./modules/applications/pi.nix
             ./modules/applications/paseo.nix
+            ./modules/applications/t3code.nix
           ];
         };
     };
