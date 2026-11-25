@@ -8,7 +8,17 @@
   ...
 }:
 let
-  paseoPkgs = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system};
+  # Upstream's Nix build skips npm lifecycle scripts, so patches/*.patch never apply and the
+  # desktop UI crashes with React error #130 (getpaseo/paseo#7673).
+  # shortcut: local copy of the fix in getpaseo/paseo#9577, drop once that is merged.
+  withPatches =
+    p:
+    p.overrideAttrs (old: {
+      preBuild = (old.preBuild or "") + "\nnpm run postinstall\n";
+    });
+  paseoPkgs = lib.mapAttrs (_: withPatches) {
+    inherit (inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}) default desktop;
+  };
   hmUsers = lib.attrNames (config.home-manager.users or { });
   hmUser = lib.head hmUsers;
 in
@@ -55,6 +65,7 @@ in
         # upstream's `paseo` system user. Hosts can still override services.paseo.user.
         services.paseo = {
           enable = true;
+          package = paseoPkgs.default;
           user = lib.mkIf (lib.length hmUsers == 1) (lib.mkDefault hmUser);
           group = lib.mkIf (lib.length hmUsers == 1) (
             lib.mkDefault config.users.users.${hmUser}.group
