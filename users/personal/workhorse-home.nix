@@ -54,6 +54,12 @@ in
     nix-direnv.enable = true;
   };
 
+  # Mirrors the NixOS hosts (common/workstation.nix); ports are left to Ubuntu's firewall.
+  services.syncthing = {
+    enable = true;
+    guiAddress = "0.0.0.0:8384";
+  };
+
   systemd.user.services.searx = {
     Unit = {
       Description = "SearXNG meta search engine";
